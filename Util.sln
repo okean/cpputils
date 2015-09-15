@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Util", "Util\Util.vcxproj", "{01C0DDAF-346B-4234-B608-06D9E50AA525}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3rd-party", "3rd-party", "{D3195AC5-1591-4FC7-B453-2222E05B7052}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xerces", "3rd-party\xerces\xerces.vcxproj", "{B101D05B-C778-4DE1-B72C-2E40F4157598}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01C0DDAF-346B-4234-B608-06D9E50AA525}.Debug|Win32.ActiveCfg = Debug|Win32
+		{01C0DDAF-346B-4234-B608-06D9E50AA525}.Debug|Win32.Build.0 = Debug|Win32
+		{01C0DDAF-346B-4234-B608-06D9E50AA525}.Release|Win32.ActiveCfg = Release|Win32
+		{01C0DDAF-346B-4234-B608-06D9E50AA525}.Release|Win32.Build.0 = Release|Win32
+		{B101D05B-C778-4DE1-B72C-2E40F4157598}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B101D05B-C778-4DE1-B72C-2E40F4157598}.Debug|Win32.Build.0 = Debug|Win32
+		{B101D05B-C778-4DE1-B72C-2E40F4157598}.Release|Win32.ActiveCfg = Release|Win32
+		{B101D05B-C778-4DE1-B72C-2E40F4157598}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B101D05B-C778-4DE1-B72C-2E40F4157598} = {D3195AC5-1591-4FC7-B453-2222E05B7052}
+	EndGlobalSection
+EndGlobal
