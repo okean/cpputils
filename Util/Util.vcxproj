@@ -16,6 +16,7 @@
     <ClInclude Include="XML\Xml.hpp" />
     <ClInclude Include="XML\XmlDependencies.hpp" />
     <ClInclude Include="XML\XmlDoc.h" />
+    <ClInclude Include="XML\XmlElement.h" />
     <ClInclude Include="XML\XmlPlatform.h" />
   </ItemGroup>
   <ItemGroup>
@@ -24,6 +25,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="XML\XmlDoc.cpp" />
+    <ClCompile Include="XML\XmlElement.cpp" />
     <ClCompile Include="XML\XmlPlatform.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

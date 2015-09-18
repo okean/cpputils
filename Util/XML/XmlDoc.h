@@ -9,11 +9,19 @@ XercescForwardDeclare(XercesDOMParser);
 namespace Util {
 namespace XML {
 
-class XmlDoc : public Util::XML::XmlPlatform
+class XmlElement;
+
+class XmlDoc : public XML::XmlPlatform
 {
 public:
     XmlDoc(const std::string &content);
     virtual ~XmlDoc();
+
+public: // public typedefs
+    typedef std::shared_ptr<XML::XmlElement> XmlElementPtr;
+
+public: // interface
+    XmlElementPtr root() const;
 
 private: // internal typedefs
     typedef Xercesc::XercesDOMParser        XmlDom;

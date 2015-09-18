@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "XmlDoc.h"
+#include "XmlElement.h"
 #include <xercesc/parsers/XercesDOMParser.hpp>
 #include <xercesc/framework/MemBufInputSource.hpp>
 
@@ -13,6 +14,14 @@ XmlDoc::XmlDoc(const std::string &content)
 
 XmlDoc::~XmlDoc()
 {
+}
+
+// interface
+
+XmlElementPtr XmlDoc::root() const
+{
+    return std::make_shared<XmlElement>(
+        *_xml->getDocument()->getDocumentElement());
 }
 
 // internal class helpers

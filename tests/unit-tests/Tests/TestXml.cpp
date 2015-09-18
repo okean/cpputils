@@ -3,7 +3,8 @@
 
 using namespace Util::XML;
 
-namespace { XmlDocPtr xml; }
+namespace { XmlDocPtr       xml;  }
+namespace { XmlElementPtr   root; }
 
 TEST(Xml, CreateXmlDoc)
 {
@@ -18,6 +19,7 @@ TEST(Xml, CreateXmlDoc)
             << "</catalog>";
     
     ASSERT_NO_THROW(
-        xml = std::make_shared<XmlDoc>(content.str());
+        xml     = std::make_shared<XmlDoc>(content.str());
+        root    = xml->root();
     );
 }
