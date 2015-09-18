@@ -1,2 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" />
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="XML">
+      <UniqueIdentifier>{9a03ff9e-a19e-488b-9997-a897f02c6790}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Infrastructure">
+      <UniqueIdentifier>{1f468556-34c7-44d4-a67b-2d386f231368}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="XML\XmlDependencies.hpp">
+      <Filter>XML</Filter>
+    </ClInclude>
+    <ClInclude Include="XML\XmlDoc.h">
+      <Filter>XML</Filter>
+    </ClInclude>
+    <ClInclude Include="XML\XmlPlatform.h">
+      <Filter>XML</Filter>
+    </ClInclude>
+    <ClInclude Include="NonCopyable.hpp" />
+    <ClInclude Include="stdafx.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="XML\Xml.hpp">
+      <Filter>XML</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="XML\XmlPlatform.cpp">
+      <Filter>XML</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="XML\XmlDoc.cpp">
+      <Filter>XML</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

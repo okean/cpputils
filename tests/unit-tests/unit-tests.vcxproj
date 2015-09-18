@@ -10,36 +10,20 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="NonCopyable.hpp" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="XML\Xml.hpp" />
-    <ClInclude Include="XML\XmlDependencies.hpp" />
-    <ClInclude Include="XML\XmlDoc.h" />
-    <ClInclude Include="XML\XmlPlatform.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="XML\XmlDoc.cpp" />
-    <ClCompile Include="XML\XmlPlatform.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{01C0DDAF-346B-4234-B608-06D9E50AA525}</ProjectGuid>
+    <ProjectGuid>{78F47CA1-AF44-4105-BB94-6750E6CD375E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Util</RootNamespace>
+    <RootNamespace>unittests</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -56,11 +40,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)lib\$(PlatformToolset)\$(Platform)\$(Configuration)\</OutDir>
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(PlatformToolset)\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)tmp\$(ProjectName)\$(PlatformToolset)\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)lib\$(PlatformToolset)\$(Platform)\$(Configuration)\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(PlatformToolset)\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)tmp\$(ProjectName)\$(PlatformToolset)\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -68,18 +54,19 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;XERCES_BUILDING_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir);$(SolutionDir)3rd-party\xerces\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ExceptionHandling>Async</ExceptionHandling>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(ProjectDir);$(SolutionDir)3rd-party\gtest\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ExceptionHandling>SyncCThrow</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)3rd-party\lib\$(PlatformToolset)\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>xerces.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)3rd-party\lib\$(PlatformToolset)\$(Platform)\$(Configuration)\;$(SolutionDir)lib\$(PlatformToolset)\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gtest.lib;xerces.lib;Util.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -89,22 +76,35 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;SECURITY_WIN32;_LIB;_NO_ASYNCRTIMP;XERCES_BUILDING_LIBRARY;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir);$(SolutionDir)3rd-party\xerces\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(ProjectDir);$(SolutionDir)3rd-party\gtest\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <SDLCheck>true</SDLCheck>
       <StringPooling>true</StringPooling>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)3rd-party\lib\$(PlatformToolset)\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>xerces.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)3rd-party\lib\$(PlatformToolset)\$(Platform)\$(Configuration)\;$(SolutionDir)lib\$(PlatformToolset)\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gtest.lib;xerces.lib;Util.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Tests\TestXml.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

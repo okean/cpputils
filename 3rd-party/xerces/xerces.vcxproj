@@ -817,9 +817,15 @@ copy %(FullPath) %(RootDir)%(Directory)Xerces_autoconf_config.hpp</Command>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;NDEBUG;WIN32;_WINDOWS;XERCES_BUILDING_LIBRARY;XERCES_USE_TRANSCODER_WINDOWS;XERCES_USE_WIN32_MSGLOADER;XERCES_USE_NETACCESSOR_WINSOCK;XERCES_USE_FILEMGR_WINDOWS;XERCES_USE_MUTEXMGR_WINDOWS;XERCES_PATH_DELIMITER_BACKSLASH;HAVE_STRICMP;HAVE_STRNICMP;HAVE_LIMITS_H;HAVE_SYS_TIMEB_H;HAVE_FTIME;HAVE_WCSUPR;HAVE_WCSLWR;HAVE_WCSICMP;HAVE_WCSNICMP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;_DEBUG;WIN32;_WINDOWS;XERCES_STATIC_LIBRARY;XERCES_BUILDING_LIBRARY;XERCES_USE_TRANSCODER_WINDOWS;XERCES_USE_MSGLOADER_INMEMORY;XERCES_USE_NETACCESSOR_WINSOCK;XERCES_USE_FILEMGR_WINDOWS;XERCES_USE_MUTEXMGR_WINDOWS;XERCES_PATH_DELIMITER_BACKSLASH;HAVE_STRICMP;HAVE_STRNICMP;HAVE_LIMITS_H;HAVE_SYS_TIMEB_H;HAVE_FTIME;HAVE_WCSUPR;HAVE_WCSLWR;HAVE_WCSICMP;HAVE_WCSNICMP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SDLCheck>true</SDLCheck>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -837,9 +843,16 @@ copy %(FullPath) %(RootDir)%(Directory)Xerces_autoconf_config.hpp</Command>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;NDEBUG;WIN32;_WINDOWS;XERCES_STATIC_LIBRARY;XERCES_BUILDING_LIBRARY;XERCES_USE_TRANSCODER_WINDOWS;XERCES_USE_MSGLOADER_INMEMORY;XERCES_USE_NETACCESSOR_WINSOCK;XERCES_USE_FILEMGR_WINDOWS;XERCES_USE_MUTEXMGR_WINDOWS;XERCES_PATH_DELIMITER_BACKSLASH;HAVE_STRICMP;HAVE_STRNICMP;HAVE_LIMITS_H;HAVE_SYS_TIMEB_H;HAVE_FTIME;HAVE_WCSUPR;HAVE_WCSLWR;HAVE_WCSICMP;HAVE_WCSNICMP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <SDLCheck>true</SDLCheck>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <StringPooling>true</StringPooling>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
