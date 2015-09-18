@@ -11,7 +11,7 @@ TEST(Xml, CreateXmlDoc)
     std::stringstream content; 
     
     content << "<?xml version=\"1.0\"?>"
-            << "<catalog>"
+            << "<catalog id = \"ctg01\">"
             << "<book id = \"bk101\">"
             << "<author>Gambardella, Matthew</author>"
             << "<title>XML Developer's Guide</title>"
@@ -22,4 +22,14 @@ TEST(Xml, CreateXmlDoc)
         xml     = std::make_shared<XmlDoc>(content.str());
         root    = xml->root();
     );
+}
+
+TEST(Xml, VerifyRootElement)
+{
+    ASSERT_NE(nullptr, root);
+
+    EXPECT_TRUE(root->contains(XmlAttribute("id")));
+    EXPECT_FALSE(root->contains(XmlAttribute("foobar")));
+
+    EXPECT_EQ("ctg01", root->get(XmlAttribute("id")));
 }

@@ -13,7 +13,9 @@
   <ItemGroup>
     <ClInclude Include="NonCopyable.hpp" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="XML\XercesString.h" />
     <ClInclude Include="XML\Xml.hpp" />
+    <ClInclude Include="XML\XmlAttribute.h" />
     <ClInclude Include="XML\XmlDependencies.hpp" />
     <ClInclude Include="XML\XmlDoc.h" />
     <ClInclude Include="XML\XmlElement.h" />
@@ -24,6 +26,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="XML\XercesString.cpp" />
+    <ClCompile Include="XML\XmlAttribute.cpp" />
     <ClCompile Include="XML\XmlDoc.cpp" />
     <ClCompile Include="XML\XmlElement.cpp" />
     <ClCompile Include="XML\XmlPlatform.cpp" />
