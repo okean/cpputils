@@ -41,3 +41,8 @@ std::string XmlElement::get(const XmlAttribute & attr) const
     return XercesString::convert(
         _impl.getAttribute(XercesString(attributeName)));
 }
+
+std::string XmlElement::name() const
+{
+    return XercesString::convert(_impl.getNodeName());
+}

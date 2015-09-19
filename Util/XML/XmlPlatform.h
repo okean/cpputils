@@ -19,8 +19,6 @@ protected: // protected class helpers
     static void rethrowWithMessage(
         const Xercesc::XMLException &ex, 
         const std::string &messaage);
-    static std::string messageFrom(
-        const Xercesc::XMLException &ex);
 };
 
 } // namespace XML

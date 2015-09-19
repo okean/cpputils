@@ -32,4 +32,6 @@ TEST(Xml, VerifyRootElement)
     EXPECT_FALSE(root->contains(XmlAttribute("foobar")));
 
     EXPECT_EQ("ctg01", root->get(XmlAttribute("id")));
+
+    EXPECT_EQ("catalog", root->name());
 }

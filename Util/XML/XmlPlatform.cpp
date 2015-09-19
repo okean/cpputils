@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "XmlPlatform.h"
+#include "XercesString.h"
 #include <xercesc/util/PlatformUtils.hpp>
 #include <xercesc/util/XMLException.hpp>
 #include <xercesc/util/XMLString.hpp>
@@ -38,17 +39,5 @@ void XmlPlatform::rethrowWithMessage(
     const std::string &messaage)
 {
     throw std::exception(
-        (messaage + ": " + messageFrom(ex)).c_str());
-}
-
-std::string XmlPlatform::messageFrom(
-    const Xercesc::XMLException &ex)
-{
-    char* tmp = xercesc::XMLString::transcode(ex.getMessage());
-
-    const std::string message{ tmp };
-
-    xercesc::XMLString::release(&tmp);
-
-    return message;
+        (messaage + ": " + XercesString::convert(ex.getMessage())).c_str());
 }

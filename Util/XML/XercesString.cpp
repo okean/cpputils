@@ -26,8 +26,11 @@ XercesString::operator const wchar_t* () const
 
 std::string XercesString::convert(const wchar_t* xmlCh)
 {
-    std::shared_ptr<const std::string> tmp{ std::make_shared<const std::string>(
-        xercesc::XMLString::transcode(xmlCh)) };
+    char* tmp = xercesc::XMLString::transcode(xmlCh);
 
-    return *tmp.get();
+    const std::string str{ tmp };
+
+    xercesc::XMLString::release(&tmp);
+
+    return str;
 }

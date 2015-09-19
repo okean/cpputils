@@ -23,6 +23,7 @@ public: // public typedefs
 public: // interface
     bool        contains(const XmlAttribute & attr) const;
     std::string get(const XmlAttribute & attr) const;
+    std::string name() const;
 
 private: // internal typedefs
     typedef Xercesc::DOMElement         DomElementImpl;
