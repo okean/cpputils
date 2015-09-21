@@ -19,6 +19,7 @@
     <ClInclude Include="XML\XmlDependencies.hpp" />
     <ClInclude Include="XML\XmlDoc.h" />
     <ClInclude Include="XML\XmlElement.h" />
+    <ClInclude Include="XML\XmlNode.h" />
     <ClInclude Include="XML\XmlPlatform.h" />
   </ItemGroup>
   <ItemGroup>
@@ -30,6 +31,7 @@
     <ClCompile Include="XML\XmlAttribute.cpp" />
     <ClCompile Include="XML\XmlDoc.cpp" />
     <ClCompile Include="XML\XmlElement.cpp" />
+    <ClCompile Include="XML\XmlNode.cpp" />
     <ClCompile Include="XML\XmlPlatform.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

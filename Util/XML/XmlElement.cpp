@@ -2,7 +2,9 @@
 #include "XercesString.h"
 #include "XmlElement.h"
 #include "XmlAttribute.h"
+#include "XmlNode.h"
 #include <xercesc/dom/DOMElement.hpp>
+#include <xercesc/dom/DOMNode.hpp>
 
 using namespace Util;
 using namespace Util::XML;
@@ -45,4 +47,57 @@ std::string XmlElement::get(const XmlAttribute & attr) const
 std::string XmlElement::name() const
 {
     return XercesString::convert(_impl.getNodeName());
+}
+
+XmlElementPtr XmlElement::get(const XmlNode &node) const
+{
+    XmlElementPtr element{};
+
+    if (node.name().empty())
+    {
+        return element;
+    }
+
+    forEachNode([&](xercesc::DOMNode &child)
+    {
+        if (isElementNode(child))
+        {
+            const std::string name{
+                XercesString::convert(child.getNodeName()) };
+
+            if (node.name() == name)
+            {
+                element = std::make_shared<XmlElement>(
+                    dynamic_cast<xercesc::DOMElement &>(child));
+
+                return false; // stop looping
+            }
+        }
+        return true;
+    });
+
+    return element;
+};
+
+// internal class helpers
+
+bool XmlElement::isElementNode(const DomNodeImpl &node)
+{
+    return node.getNodeType() == xercesc::DOMNode::NodeType::ELEMENT_NODE;
+}
+
+// internal helpers
+
+void XmlElement::forEachNode(
+    std::function<bool(DomNodeImpl &)> onNode) const
+{
+    for (xercesc::DOMNode *child = _impl.getFirstChild()
+        ; child != NULL
+        ; child = _impl.getNextSibling())
+    {
+        if (!onNode(*child)) // return false to stop looping nodes
+        {
+            break;
+        }
+    }
 }

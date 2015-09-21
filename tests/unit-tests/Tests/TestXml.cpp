@@ -24,7 +24,7 @@ TEST(Xml, CreateXmlDoc)
     );
 }
 
-TEST(Xml, VerifyRootElement)
+TEST(Xml, GetRootElement)
 {
     ASSERT_NE(nullptr, root);
 
@@ -34,4 +34,20 @@ TEST(Xml, VerifyRootElement)
     EXPECT_EQ("ctg01", root->get(XmlAttribute("id")));
 
     EXPECT_EQ("catalog", root->name());
+}
+
+namespace { XmlElementPtr child; }
+
+TEST(Xml, GetChildElement)
+{
+    ASSERT_NE(nullptr, root);
+
+    child = root->get(XmlNode("book"));
+    XmlElementPtr missingChild = root->get(XmlNode("note"));
+
+    ASSERT_NE(nullptr, child);
+    ASSERT_EQ(nullptr, missingChild);
+
+    EXPECT_TRUE(child->contains(XmlAttribute("id")));
+    EXPECT_EQ("bk101", child->get(XmlAttribute("id")));
 }

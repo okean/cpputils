@@ -4,3 +4,4 @@
 #include <Util/XML/XmlDoc.h>
 #include <Util/XML/XmlElement.h>
 #include <Util/XML/XmlAttribute.h>
+#include <Util/XML/XmlNode.h>
