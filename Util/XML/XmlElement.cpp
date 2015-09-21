@@ -79,11 +79,33 @@ XmlElementPtr XmlElement::get(const XmlNode &node) const
     return element;
 };
 
+std::string XmlElement::getText() const
+{
+    std::string text{};
+
+    forEachNode([&](xercesc::DOMNode &child)
+    {
+        if (isTextNode(child))
+        {
+            text.append(XercesString::convert(child.getTextContent()));
+        }
+
+        return true; // return true to continue looping
+    });
+
+    return text;
+}
+
 // internal class helpers
 
 bool XmlElement::isElementNode(const DomNodeImpl &node)
 {
     return node.getNodeType() == xercesc::DOMNode::NodeType::ELEMENT_NODE;
+}
+
+bool XmlElement::isTextNode(const DomNodeImpl &node)
+{
+    return node.getNodeType() == xercesc::DOMNode::NodeType::TEXT_NODE;
 }
 
 // internal helpers
@@ -93,7 +115,7 @@ void XmlElement::forEachNode(
 {
     for (xercesc::DOMNode *child = _impl.getFirstChild()
         ; child != NULL
-        ; child = _impl.getNextSibling())
+        ; child = (*child).getNextSibling())
     {
         if (!onNode(*child)) // return false to stop looping nodes
         {

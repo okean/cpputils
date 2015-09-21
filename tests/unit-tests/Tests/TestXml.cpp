@@ -4,7 +4,7 @@
 using namespace Util::XML;
 
 namespace { XmlDocPtr       xml;  }
-namespace { XmlElementPtr   root; }
+namespace { XmlElementPtr   catalog; }
 
 TEST(Xml, CreateXmlDoc)
 {
@@ -20,34 +20,47 @@ TEST(Xml, CreateXmlDoc)
     
     ASSERT_NO_THROW(
         xml     = std::make_shared<XmlDoc>(content.str());
-        root    = xml->root();
+        catalog    = xml->root();
     );
 }
 
 TEST(Xml, GetRootElement)
 {
-    ASSERT_NE(nullptr, root);
+    ASSERT_NE(nullptr, catalog);
 
-    EXPECT_TRUE(root->contains(XmlAttribute("id")));
-    EXPECT_FALSE(root->contains(XmlAttribute("foobar")));
+    EXPECT_TRUE(catalog->contains(XmlAttribute("id")));
+    EXPECT_FALSE(catalog->contains(XmlAttribute("foobar")));
 
-    EXPECT_EQ("ctg01", root->get(XmlAttribute("id")));
+    EXPECT_EQ("ctg01", catalog->get(XmlAttribute("id")));
 
-    EXPECT_EQ("catalog", root->name());
+    EXPECT_EQ("catalog", catalog->name());
 }
 
-namespace { XmlElementPtr child; }
+namespace { XmlElementPtr book; }
 
 TEST(Xml, GetChildElement)
 {
-    ASSERT_NE(nullptr, root);
+    ASSERT_NE(nullptr, catalog);
 
-    child = root->get(XmlNode("book"));
-    XmlElementPtr missingChild = root->get(XmlNode("note"));
+    book = catalog->get(XmlNode("book"));
+    XmlElementPtr element = catalog->get(XmlNode("note"));
 
-    ASSERT_NE(nullptr, child);
-    ASSERT_EQ(nullptr, missingChild);
+    ASSERT_NE(nullptr, book);
+    ASSERT_EQ(nullptr, element);
 
-    EXPECT_TRUE(child->contains(XmlAttribute("id")));
-    EXPECT_EQ("bk101", child->get(XmlAttribute("id")));
+    EXPECT_TRUE(book->contains(XmlAttribute("id")));
+    EXPECT_EQ("bk101", book->get(XmlAttribute("id")));
+}
+
+namespace { XmlElementPtr title; }
+
+TEST(Xml, GetElementText)
+{
+    ASSERT_NE(nullptr, book);
+
+    title = book->get(XmlNode("title"));
+
+    ASSERT_NE(nullptr, title);
+    
+    EXPECT_EQ("XML Developer's Guide", title->getText());
 }

@@ -30,8 +30,10 @@ public: // public typedefs
 public: // interface
     bool            contains(const XmlAttribute &attr) const;
     std::string     get(const XmlAttribute &attr) const;
+    std::string     getText() const;
     
     std::string     name() const;
+
     XmlElementPtr   get(const XmlNode &node) const;
 
 private: // internal typedefs
@@ -40,6 +42,7 @@ private: // internal typedefs
 
 private: // internal class helpers
     static bool isElementNode(const DomNodeImpl &node);
+    static bool isTextNode(const DomNodeImpl &node);
 
 private: // internal helpers
     void forEachNode(std::function<bool(DomNodeImpl &)> onNode) const;
