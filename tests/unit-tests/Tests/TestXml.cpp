@@ -62,5 +62,5 @@ TEST(Xml, GetElementText)
 
     ASSERT_NE(nullptr, title);
     
-    EXPECT_EQ("XML Developer's Guide", title->getText());
+    EXPECT_EQ("XML Developer's Guide", title->text());
 }

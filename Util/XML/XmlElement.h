@@ -30,7 +30,7 @@ public: // public typedefs
 public: // interface
     bool            contains(const XmlAttribute &attr) const;
     std::string     get(const XmlAttribute &attr) const;
-    std::string     getText() const;
+    std::string     text() const;
     
     std::string     name() const;
 

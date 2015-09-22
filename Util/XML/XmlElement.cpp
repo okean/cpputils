@@ -5,6 +5,7 @@
 #include "XmlNode.h"
 #include <xercesc/dom/DOMElement.hpp>
 #include <xercesc/dom/DOMNode.hpp>
+#include <xercesc/dom/DOMText.hpp>
 
 using namespace Util;
 using namespace Util::XML;
@@ -79,7 +80,7 @@ XmlElementPtr XmlElement::get(const XmlNode &node) const
     return element;
 };
 
-std::string XmlElement::getText() const
+std::string XmlElement::text() const
 {
     std::string text{};
 
@@ -87,7 +88,10 @@ std::string XmlElement::getText() const
     {
         if (isTextNode(child))
         {
-            text.append(XercesString::convert(child.getTextContent()));
+            xercesc::DOMText & textNode =
+                dynamic_cast<xercesc::DOMText &>(child);
+
+            text.append(XercesString::convert(textNode.getWholeText()));
         }
 
         return true; // return true to continue looping
