@@ -64,3 +64,29 @@ TEST(Xml, GetElementText)
     
     EXPECT_EQ("XML Developer's Guide", title->text());
 }
+
+TEST(Xml, GetAllChilds)
+{
+    ASSERT_NE(nullptr, book);
+
+    ASSERT_EQ(2, book->nodes()->size());
+}
+
+TEST(Xml, SetChildAttributes)
+{
+    ASSERT_NE(nullptr, book);
+
+    const std::string attrName  { "ISBN" };
+    const std::string attrValue { "978-0-553-27450-9" };
+
+    book->set(XmlAttribute(attrName, attrValue));
+
+    EXPECT_TRUE(book->contains(XmlAttribute(attrName)));
+    EXPECT_EQ(attrValue, book->get(XmlAttribute(attrName)));
+
+    const std::string newAttrValue{ "5-89815-410-8" };
+
+    book->set(XmlAttribute(attrName, newAttrValue));
+
+    EXPECT_EQ(newAttrValue, book->get(XmlAttribute(attrName)));
+}

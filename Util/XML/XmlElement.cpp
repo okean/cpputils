@@ -45,6 +45,12 @@ std::string XmlElement::get(const XmlAttribute & attr) const
         _impl.getAttribute(XercesString(attributeName)));
 }
 
+void XmlElement::set(const XmlAttribute &attr)
+{
+    _impl.setAttribute(
+        XercesString(attr.name()), XercesString(attr.value()));
+}
+
 std::string XmlElement::name() const
 {
     return XercesString::convert(_impl.getNodeName());
@@ -98,6 +104,28 @@ std::string XmlElement::text() const
     });
 
     return text;
+}
+
+XmlElementsPtr  XmlElement::nodes() const
+{
+    XMLSize_t count = _impl.getChildElementCount();
+
+    XmlElementsPtr elements = std::make_shared<XmlElements>();
+    elements->reserve(count);
+
+    forEachNode([=](xercesc::DOMNode &child)
+    {
+        if (isElementNode(child))
+        {
+            elements->push_back(
+                std::make_shared<XmlElement>(
+                dynamic_cast<xercesc::DOMElement &>(child)));
+        }
+
+        return true; // return true to continue looping
+    });
+
+    return elements;
 }
 
 // internal class helpers

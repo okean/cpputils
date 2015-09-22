@@ -4,6 +4,7 @@
 #include <Util/NonCopyable.hpp>
 #include <memory>
 #include <functional>
+#include <vector>
 
 XercescForwardDeclare(DOMElement);
 XercescForwardDeclare(DOMNode);
@@ -12,7 +13,9 @@ namespace Util {
 namespace XML {
 
 class XmlElement;
-typedef std::shared_ptr<XmlElement> XmlElementPtr;
+typedef std::shared_ptr<XmlElement>     XmlElementPtr;
+typedef std::vector<XmlElementPtr>      XmlElements;
+typedef std::shared_ptr<XmlElements>    XmlElementsPtr;
 
 class XmlAttribute;
 class XmlNode;
@@ -30,11 +33,14 @@ public: // public typedefs
 public: // interface
     bool            contains(const XmlAttribute &attr) const;
     std::string     get(const XmlAttribute &attr) const;
+    void            set(const XmlAttribute &attr);
     std::string     text() const;
     
     std::string     name() const;
 
     XmlElementPtr   get(const XmlNode &node) const;
+
+    XmlElementsPtr  nodes() const;
 
 private: // internal typedefs
     typedef Xercesc::DOMElement         DomElementImpl;
