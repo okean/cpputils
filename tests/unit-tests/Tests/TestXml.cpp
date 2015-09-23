@@ -90,3 +90,12 @@ TEST(Xml, SetChildAttributes)
 
     EXPECT_EQ(newAttrValue, book->get(XmlAttribute(attrName)));
 }
+
+TEST(Xml, RemoveChilds)
+{
+    ASSERT_NE(nullptr, book);
+
+    book->clear();
+
+    ASSERT_EQ(0, book->nodes()->size());
+}

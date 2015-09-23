@@ -34,13 +34,16 @@ public: // interface
     bool            contains(const XmlAttribute &attr) const;
     std::string     get(const XmlAttribute &attr) const;
     void            set(const XmlAttribute &attr);
-    std::string     text() const;
     
+    std::string     text() const;
     std::string     name() const;
 
     XmlElementPtr   get(const XmlNode &node) const;
-
     XmlElementsPtr  nodes() const;
+    void remove(const XmlElement &elem);
+    void clear();
+
+    operator Xercesc::DOMNode* () const;
 
 private: // internal typedefs
     typedef Xercesc::DOMElement         DomElementImpl;

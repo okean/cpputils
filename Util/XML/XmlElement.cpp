@@ -6,6 +6,7 @@
 #include <xercesc/dom/DOMElement.hpp>
 #include <xercesc/dom/DOMNode.hpp>
 #include <xercesc/dom/DOMText.hpp>
+#include <algorithm>
 
 using namespace Util;
 using namespace Util::XML;
@@ -47,8 +48,10 @@ std::string XmlElement::get(const XmlAttribute & attr) const
 
 void XmlElement::set(const XmlAttribute &attr)
 {
-    _impl.setAttribute(
-        XercesString(attr.name()), XercesString(attr.value()));
+    XercesString name   { attr.name() };
+    XercesString value  { attr.value() };
+
+    _impl.setAttribute(name, value);
 }
 
 std::string XmlElement::name() const
@@ -126,6 +129,29 @@ XmlElementsPtr  XmlElement::nodes() const
     });
 
     return elements;
+}
+
+void XmlElement::remove(const XmlElement &elem)
+{
+    if (xercesc::DOMNode* child = _impl.removeChild(elem))
+    {
+        child->release();
+    }
+}
+
+void XmlElement::clear()
+{
+    XmlElements nodesList{ *nodes() };
+
+    for (auto it : nodesList)
+    {
+        remove(*it);
+    }
+}
+
+XmlElement::operator Xercesc::DOMNode * () const
+{
+    return &_impl;
 }
 
 // internal class helpers
