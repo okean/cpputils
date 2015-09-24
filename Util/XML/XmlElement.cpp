@@ -6,6 +6,7 @@
 #include <xercesc/dom/DOMElement.hpp>
 #include <xercesc/dom/DOMNode.hpp>
 #include <xercesc/dom/DOMText.hpp>
+#include <xercesc/dom/DOMDocument.hpp>
 #include <algorithm>
 
 using namespace Util;
@@ -89,6 +90,19 @@ XmlElementPtr XmlElement::get(const XmlNode &node) const
     return element;
 };
 
+XmlElementPtr XmlElement::add(const XmlNode &node)
+{
+    if (Xercesc::DOMNode* child = xmlDoc()->createElement(XercesString(node.name())))
+    {
+        _impl.appendChild(child);
+
+        return std::make_shared<XmlElement>(
+            dynamic_cast<xercesc::DOMElement &>(*child));
+    }
+
+    return XmlElementPtr{};
+}
+
 std::string XmlElement::text() const
 {
     std::string text{};
@@ -107,6 +121,14 @@ std::string XmlElement::text() const
     });
 
     return text;
+}
+
+void XmlElement::set(const std::string &text)
+{
+    if (Xercesc::DOMText* child = xmlDoc()->createTextNode(XercesString(text)))
+    {
+        _impl.appendChild(child);
+    }
 }
 
 XmlElementsPtr  XmlElement::nodes() const
@@ -141,7 +163,7 @@ void XmlElement::remove(const XmlElement &elem)
 
 void XmlElement::clear()
 {
-    XmlElements nodesList{ *nodes() };
+    const XmlElements nodesList{ *nodes() };
 
     for (auto it : nodesList)
     {
@@ -180,4 +202,9 @@ void XmlElement::forEachNode(
             break;
         }
     }
+}
+
+XmlElement::DOMDocumentImpl * XmlElement::xmlDoc() const
+{
+    return _impl.getOwnerDocument();
 }

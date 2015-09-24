@@ -97,5 +97,61 @@ TEST(Xml, RemoveChilds)
 
     book->clear();
 
-    ASSERT_EQ(0, book->nodes()->size());
+    EXPECT_EQ(0, book->nodes()->size());
+
+    catalog->clear();
+
+    EXPECT_EQ(0, catalog->nodes()->size());
+}
+
+namespace { XmlElementPtr   root; }
+
+TEST(Xml, CreateEmptyDoc)
+{
+    ASSERT_NO_THROW(
+        book.reset();
+        catalog.reset();
+        xml.reset());
+
+    ASSERT_NO_THROW(
+        xml = std::make_shared<XmlDoc>("<object>");;
+        root = xml->root();
+    );
+
+    ASSERT_NE(nullptr, root);
+
+    EXPECT_EQ("object", root->name());
+}
+
+TEST(Xml, AddChild)
+{
+    ASSERT_NE(nullptr, root);
+
+    const std::string name1{ "child1" };
+
+    XmlElementPtr child1 = root->add(XmlNode(name1));
+
+    EXPECT_EQ(name1, child1->name());
+
+    const std::string attr1{ "attr1" };
+    const std::string val1{ "val1" };
+
+    child1->set(XmlAttribute(attr1, val1));
+
+    EXPECT_TRUE(child1->contains(XmlAttribute(attr1)));
+    EXPECT_EQ(val1, child1->get(XmlAttribute(attr1)));
+
+    const std::string text{ "text" };
+
+    child1->set(text);
+
+    EXPECT_EQ(text, child1->text());
+
+    EXPECT_EQ(1, root->nodes()->size());
+
+    const std::string name2{ "child2" };
+
+    XmlElementPtr child2 = root->add(XmlNode(name2));
+
+    EXPECT_EQ(2, root->nodes()->size());
 }

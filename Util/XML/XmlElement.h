@@ -8,6 +8,7 @@
 
 XercescForwardDeclare(DOMElement);
 XercescForwardDeclare(DOMNode);
+XercescForwardDeclare(DOMDocument);
 
 namespace Util {
 namespace XML {
@@ -36,9 +37,11 @@ public: // interface
     void            set(const XmlAttribute &attr);
     
     std::string     text() const;
+    void            set(const std::string &text);
     std::string     name() const;
 
     XmlElementPtr   get(const XmlNode &node) const;
+    XmlElementPtr   add(const XmlNode &node);
     XmlElementsPtr  nodes() const;
     void remove(const XmlElement &elem);
     void clear();
@@ -48,6 +51,7 @@ public: // interface
 private: // internal typedefs
     typedef Xercesc::DOMElement         DomElementImpl;
     typedef Xercesc::DOMNode            DomNodeImpl;
+    typedef Xercesc::DOMDocument        DOMDocumentImpl;
 
 private: // internal class helpers
     static bool isElementNode(const DomNodeImpl &node);
@@ -55,6 +59,7 @@ private: // internal class helpers
 
 private: // internal helpers
     void forEachNode(std::function<bool(DomNodeImpl &)> onNode) const;
+    DOMDocumentImpl * xmlDoc() const;
 
 private: // member variables
     DomElementImpl &_impl;
