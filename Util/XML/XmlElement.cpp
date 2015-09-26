@@ -7,6 +7,7 @@
 #include <xercesc/dom/DOMNode.hpp>
 #include <xercesc/dom/DOMText.hpp>
 #include <xercesc/dom/DOMDocument.hpp>
+#include <xercesc/dom/DOMNamedNodeMap.hpp>
 #include <algorithm>
 
 using namespace Util;
@@ -53,6 +54,33 @@ void XmlElement::set(const XmlAttribute &attr)
     XercesString value  { attr.value() };
 
     _impl.setAttribute(name, value);
+}
+
+XmlElement::XmlAttributesPtr XmlElement::attributes() const
+{
+    XmlAttributesPtr attributes{ std::make_shared<XmlAttributes>() };
+
+    if (xercesc::DOMNamedNodeMap* map = _impl.getAttributes())
+    {
+        size_t count = map->getLength();
+
+        attributes->reserve(count);
+
+        for (size_t i = 0; i < count; i++)
+        {
+            xercesc::DOMNode* node = map->item(i);
+
+            const std::string name  { XercesString::convert(node->getNodeName()) };
+            const std::string value { XercesString::convert(node->getNodeValue()) };
+
+            attributes->push_back(
+                std::make_shared<XmlAttribute>(name, value));
+        }
+
+        return attributes;
+    }
+
+    return XmlAttributesPtr{};
 }
 
 std::string XmlElement::name() const
@@ -123,12 +151,16 @@ std::string XmlElement::text() const
     return text;
 }
 
-void XmlElement::set(const std::string &text)
+XmlElementPtr XmlElement::set(const std::string &text)
 {
     if (Xercesc::DOMText* child = xmlDoc()->createTextNode(XercesString(text)))
     {
         _impl.appendChild(child);
+
+        return std::make_shared<XmlElement>(_impl);
     }
+
+    return XmlElementPtr{};
 }
 
 XmlElementsPtr  XmlElement::nodes() const

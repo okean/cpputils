@@ -123,13 +123,15 @@ TEST(Xml, CreateEmptyDoc)
     EXPECT_EQ("object", root->name());
 }
 
+namespace { XmlElementPtr child1; }
+
 TEST(Xml, AddChild)
 {
     ASSERT_NE(nullptr, root);
 
     const std::string name1{ "child1" };
 
-    XmlElementPtr child1 = root->add(XmlNode(name1));
+    child1 = root->add(XmlNode(name1));
 
     EXPECT_EQ(name1, child1->name());
 
@@ -154,4 +156,18 @@ TEST(Xml, AddChild)
     XmlElementPtr child2 = root->add(XmlNode(name2));
 
     EXPECT_EQ(2, root->nodes()->size());
+}
+
+TEST(Xml, Attributes)
+{
+    ASSERT_NE(nullptr, child1);
+
+    EXPECT_EQ(1, child1->attributes()->size());
+
+    const std::string attr2{ "attr2" };
+    const std::string val2{ "val2" };
+
+    child1->set(XmlAttribute(attr2, val2));
+
+    EXPECT_EQ(2, child1->attributes()->size());
 }

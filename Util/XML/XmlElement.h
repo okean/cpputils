@@ -29,20 +29,23 @@ public:
 
 public: // public typedefs
     typedef XML::XmlAttribute               XmlAttribute;
+    typedef std::shared_ptr<XmlAttribute>   XmlAttributePtr;
+    typedef std::vector<XmlAttributePtr>    XmlAttributes;
+    typedef std::shared_ptr<XmlAttributes>  XmlAttributesPtr;
     typedef XML::XmlNode                    XmlNode;
 
 public: // interface
-    bool            contains(const XmlAttribute &attr) const;
-    std::string     get(const XmlAttribute &attr) const;
-    void            set(const XmlAttribute &attr);
+    bool                contains(const XmlAttribute &attr) const;
+    std::string         get(const XmlAttribute &attr) const;
+    void                set(const XmlAttribute &attr);
+    XmlAttributesPtr    attributes() const;
     
-    std::string     text() const;
-    void            set(const std::string &text);
-    std::string     name() const;
-
-    XmlElementPtr   get(const XmlNode &node) const;
-    XmlElementPtr   add(const XmlNode &node);
-    XmlElementsPtr  nodes() const;
+    std::string         text() const;
+    XmlElementPtr       set(const std::string &text);
+    std::string         name() const;
+    XmlElementPtr       get(const XmlNode &node) const;
+    XmlElementPtr       add(const XmlNode &node);
+    XmlElementsPtr      nodes() const;
     void remove(const XmlElement &elem);
     void clear();
 
