@@ -49,6 +49,8 @@ public: // interface
     void remove(const XmlElement &elem);
     void clear();
 
+    std::string toString() const;
+
     operator Xercesc::DOMNode* () const;
 
 private: // internal typedefs

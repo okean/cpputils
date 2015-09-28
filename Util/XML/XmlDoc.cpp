@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "XmlDoc.h"
 #include "XmlElement.h"
+#include "XercesString.h"
 #include <xercesc/parsers/XercesDOMParser.hpp>
 #include <xercesc/framework/MemBufInputSource.hpp>
 
@@ -21,7 +22,12 @@ XmlDoc::~XmlDoc()
 XmlElementPtr XmlDoc::root() const
 {
     return std::make_shared<XmlElement>(
-        *_xml->getDocument()->getDocumentElement());
+        *xmlDoc()->getDocumentElement());
+}
+
+std::string XmlDoc::toString() const
+{
+    return XercesString::serialize(xmlDoc());
 }
 
 // internal class helpers
@@ -53,4 +59,11 @@ XmlDoc::XmlDomPtr XmlDoc::createXmlDomParser(const std::string &content)
     }
 
     return XmlDomPtr{};
+}
+
+// internal helpers
+
+XmlDoc::DomDocumentImpl * XmlDoc::xmlDoc() const
+{
+    return _xml->getDocument();
 }

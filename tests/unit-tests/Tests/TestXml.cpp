@@ -171,3 +171,9 @@ TEST(Xml, Attributes)
 
     EXPECT_EQ(2, child1->attributes()->size());
 }
+
+TEST(Xml, Serialize)
+{
+    EXPECT_FALSE(root->toString().empty());
+    EXPECT_FALSE(xml->toString().empty());
+}

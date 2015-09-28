@@ -203,6 +203,11 @@ void XmlElement::clear()
     }
 }
 
+std::string XmlElement::toString() const
+{
+    return XercesString::serialize(&_impl);
+}
+
 XmlElement::operator Xercesc::DOMNode * () const
 {
     return &_impl;

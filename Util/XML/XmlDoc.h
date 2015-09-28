@@ -5,6 +5,7 @@
 #include <memory>
 
 XercescForwardDeclare(XercesDOMParser);
+XercescForwardDeclare(DOMDocument);
 
 namespace Util {
 namespace XML {
@@ -22,6 +23,7 @@ public: // public typedefs
 
 public: // interface
     XmlElementPtr root() const;
+    std::string toString() const;
 
 private: // internal typedefs
     typedef Xercesc::XercesDOMParser        XmlDom;
@@ -29,6 +31,12 @@ private: // internal typedefs
 
 private: // internal class helpers
     static XmlDomPtr createXmlDomParser(const std::string &content);
+
+private: // internal typedefs
+    typedef Xercesc::DOMDocument DomDocumentImpl;
+
+private: // internal helpers
+    DomDocumentImpl * xmlDoc() const;
 
 private: // member variables
     XmlDomPtr _xml;
