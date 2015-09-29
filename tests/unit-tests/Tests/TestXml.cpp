@@ -69,7 +69,7 @@ TEST(Xml, GetAllChilds)
 {
     ASSERT_NE(nullptr, book);
 
-    ASSERT_EQ(2, book->nodes()->size());
+    ASSERT_EQ(2, book->nodes().size());
 }
 
 TEST(Xml, SetChildAttributes)
@@ -97,11 +97,11 @@ TEST(Xml, RemoveChilds)
 
     book->clear();
 
-    EXPECT_EQ(0, book->nodes()->size());
+    EXPECT_EQ(0, book->nodes().size());
 
     catalog->clear();
 
-    EXPECT_EQ(0, catalog->nodes()->size());
+    EXPECT_EQ(0, catalog->nodes().size());
 }
 
 namespace { XmlElementPtr   root; }
@@ -149,27 +149,47 @@ TEST(Xml, AddChild)
 
     EXPECT_EQ(text, child1->text());
 
-    EXPECT_EQ(1, root->nodes()->size());
+    EXPECT_EQ(1, root->nodes().size());
 
     const std::string name2{ "child2" };
 
     XmlElementPtr child2 = root->add(XmlNode(name2));
 
-    EXPECT_EQ(2, root->nodes()->size());
+    EXPECT_EQ(2, root->nodes().size());
 }
 
 TEST(Xml, Attributes)
 {
     ASSERT_NE(nullptr, child1);
 
-    EXPECT_EQ(1, child1->attributes()->size());
+    EXPECT_EQ(1, child1->attributes().size());
 
     const std::string attr2{ "attr2" };
     const std::string val2{ "val2" };
 
     child1->set(XmlAttribute(attr2, val2));
 
-    EXPECT_EQ(2, child1->attributes()->size());
+    EXPECT_EQ(2, child1->attributes().size());
+}
+
+TEST(Xml, AddXmlElement)
+{
+    std::stringstream content;
+
+    content << "<?xml version=\"1.0\"?>"
+            << "<element id = \"obj01\">"
+            << "<child1>value1</child1>"
+            << "<child2>value2</child2>"
+            << "</element>";
+
+    XmlDocPtr xmldoc        { std::make_shared<XmlDoc>(content.str()) };
+    XmlElementPtr element   { xmldoc->root() };
+
+    ASSERT_NO_THROW(root->add(*element));
+
+    EXPECT_EQ(3, root->nodes().size());
+
+    const std::string a = root->toString();
 }
 
 TEST(Xml, Serialize)
@@ -177,3 +197,4 @@ TEST(Xml, Serialize)
     EXPECT_FALSE(root->toString().empty());
     EXPECT_FALSE(xml->toString().empty());
 }
+

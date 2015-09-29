@@ -16,7 +16,6 @@ namespace XML {
 class XmlElement;
 typedef std::shared_ptr<XmlElement>     XmlElementPtr;
 typedef std::vector<XmlElementPtr>      XmlElements;
-typedef std::shared_ptr<XmlElements>    XmlElementsPtr;
 
 class XmlAttribute;
 class XmlNode;
@@ -31,21 +30,21 @@ public: // public typedefs
     typedef XML::XmlAttribute               XmlAttribute;
     typedef std::shared_ptr<XmlAttribute>   XmlAttributePtr;
     typedef std::vector<XmlAttributePtr>    XmlAttributes;
-    typedef std::shared_ptr<XmlAttributes>  XmlAttributesPtr;
     typedef XML::XmlNode                    XmlNode;
 
 public: // interface
     bool                contains(const XmlAttribute &attr) const;
     std::string         get(const XmlAttribute &attr) const;
     void                set(const XmlAttribute &attr);
-    XmlAttributesPtr    attributes() const;
+    XmlAttributes       attributes() const;
     
     std::string         text() const;
     XmlElementPtr       set(const std::string &text);
     std::string         name() const;
     XmlElementPtr       get(const XmlNode &node) const;
     XmlElementPtr       add(const XmlNode &node);
-    XmlElementsPtr      nodes() const;
+    XmlElementPtr       add(const XmlElement &elem);
+    XmlElements         nodes() const;
     void remove(const XmlElement &elem);
     void clear();
 

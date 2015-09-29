@@ -56,15 +56,15 @@ void XmlElement::set(const XmlAttribute &attr)
     _impl.setAttribute(name, value);
 }
 
-XmlElement::XmlAttributesPtr XmlElement::attributes() const
+XmlElement::XmlAttributes XmlElement::attributes() const
 {
-    XmlAttributesPtr attributes{ std::make_shared<XmlAttributes>() };
+    XmlAttributes attributes;
 
     if (xercesc::DOMNamedNodeMap* map = _impl.getAttributes())
     {
         size_t count = map->getLength();
 
-        attributes->reserve(count);
+        attributes.reserve(count);
 
         for (size_t i = 0; i < count; i++)
         {
@@ -73,14 +73,12 @@ XmlElement::XmlAttributesPtr XmlElement::attributes() const
             const std::string name  { XercesString::convert(node->getNodeName()) };
             const std::string value { XercesString::convert(node->getNodeValue()) };
 
-            attributes->push_back(
+            attributes.push_back(
                 std::make_shared<XmlAttribute>(name, value));
         }
-
-        return attributes;
     }
 
-    return XmlAttributesPtr{};
+    return std::move(attributes);
 }
 
 std::string XmlElement::name() const
@@ -131,6 +129,23 @@ XmlElementPtr XmlElement::add(const XmlNode &node)
     return XmlElementPtr{};
 }
 
+XmlElementPtr XmlElement::add(const XmlElement &elem)
+{
+    XmlElementPtr newElem{ add(XmlNode(elem.name())) };
+
+    for (auto node : elem.nodes())
+    {
+        newElem->add(*node);
+    }
+
+    for (auto attribute : elem.attributes())
+    {
+        newElem->set(*attribute);
+    }
+
+    return newElem;
+}
+
 std::string XmlElement::text() const
 {
     std::string text{};
@@ -163,18 +178,18 @@ XmlElementPtr XmlElement::set(const std::string &text)
     return XmlElementPtr{};
 }
 
-XmlElementsPtr  XmlElement::nodes() const
+XmlElements  XmlElement::nodes() const
 {
     XMLSize_t count = _impl.getChildElementCount();
 
-    XmlElementsPtr elements = std::make_shared<XmlElements>();
-    elements->reserve(count);
+    XmlElements elements;
+    elements.reserve(count);
 
-    forEachNode([=](xercesc::DOMNode &child)
+    forEachNode([&](xercesc::DOMNode &child)
     {
         if (isElementNode(child))
         {
-            elements->push_back(
+            elements.push_back(
                 std::make_shared<XmlElement>(
                 dynamic_cast<xercesc::DOMElement &>(child)));
         }
@@ -182,7 +197,7 @@ XmlElementsPtr  XmlElement::nodes() const
         return true; // return true to continue looping
     });
 
-    return elements;
+    return std::move(elements);
 }
 
 void XmlElement::remove(const XmlElement &elem)
@@ -195,9 +210,7 @@ void XmlElement::remove(const XmlElement &elem)
 
 void XmlElement::clear()
 {
-    const XmlElements nodesList{ *nodes() };
-
-    for (auto it : nodesList)
+    for (auto it : nodes())
     {
         remove(*it);
     }
