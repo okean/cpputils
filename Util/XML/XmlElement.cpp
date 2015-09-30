@@ -129,21 +129,24 @@ XmlElementPtr XmlElement::add(const XmlNode &node)
     return XmlElementPtr{};
 }
 
-XmlElementPtr XmlElement::add(const XmlElement &elem)
+void XmlElement::addCopy(const XmlElement &child)
 {
-    XmlElementPtr newElem{ add(XmlNode(elem.name())) };
+    XmlElementPtr element{ add(XmlNode(child.name())) };
 
-    for (auto node : elem.nodes())
+    for (auto node : child.nodes())
     {
-        newElem->add(*node);
+        element->addCopy(*node);
     }
 
-    for (auto attribute : elem.attributes())
+    for (auto attribute : child.attributes())
     {
-        newElem->set(*attribute);
+        element->set(*attribute);
     }
+}
 
-    return newElem;
+void XmlElement::add(const XmlElement &child)
+{
+    _impl.appendChild(child);
 }
 
 std::string XmlElement::text() const

@@ -185,11 +185,9 @@ TEST(Xml, AddXmlElement)
     XmlDocPtr xmldoc        { std::make_shared<XmlDoc>(content.str()) };
     XmlElementPtr element   { xmldoc->root() };
 
-    ASSERT_NO_THROW(root->add(*element));
+    ASSERT_NO_THROW(root->addCopy(*element));
 
     EXPECT_EQ(3, root->nodes().size());
-
-    const std::string a = root->toString();
 }
 
 TEST(Xml, Serialize)
@@ -197,4 +195,3 @@ TEST(Xml, Serialize)
     EXPECT_FALSE(root->toString().empty());
     EXPECT_FALSE(xml->toString().empty());
 }
-
