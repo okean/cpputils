@@ -148,6 +148,10 @@ TEST(Xml, AddChild)
     child1->set(text);
 
     EXPECT_EQ(text, child1->text());
+    EXPECT_EQ(0, child1->nodes().size());
+    child1->add(XmlNode("c1"));
+    child1->add(XmlNode("c2"));
+    EXPECT_EQ(2, child1->nodes().size());
 
     EXPECT_EQ(1, root->nodes().size());
 
@@ -186,8 +190,15 @@ TEST(Xml, AddXmlElement)
     XmlElementPtr element   { xmldoc->root() };
 
     ASSERT_NO_THROW(root->addCopy(*element));
-
     EXPECT_EQ(3, root->nodes().size());
+
+    ASSERT_NO_THROW(root->add(*element));
+    EXPECT_EQ(3, root->nodes().size());
+
+    XmlElementPtr child3 = child1->add(XmlNode("child3"));
+
+    ASSERT_NO_THROW(root->add(*child3));
+    EXPECT_EQ(4, root->nodes().size());
 }
 
 TEST(Xml, Serialize)

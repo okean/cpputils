@@ -146,7 +146,10 @@ void XmlElement::addCopy(const XmlElement &child)
 
 void XmlElement::add(const XmlElement &child)
 {
-    _impl.appendChild(child);
+    if (xmlDoc() == child.xmlDoc())
+    {
+        _impl.appendChild(child);
+    }
 }
 
 std::string XmlElement::text() const
