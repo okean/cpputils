@@ -43,7 +43,7 @@ public: // interface
     std::string         name() const;
     XmlElementPtr       get(const XmlNode &node) const;
     XmlElementPtr       add(const XmlNode &node);
-    void                addCopy(const XmlElement &child);
+    XmlElementPtr       addCopy(const XmlElement &child);
     void                add(const XmlElement &child);
     XmlElements         nodes() const;
     void remove(const XmlElement &elem);

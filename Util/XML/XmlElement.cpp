@@ -129,19 +129,26 @@ XmlElementPtr XmlElement::add(const XmlNode &node)
     return XmlElementPtr{};
 }
 
-void XmlElement::addCopy(const XmlElement &child)
+XmlElementPtr XmlElement::addCopy(const XmlElement &child)
 {
     XmlElementPtr element{ add(XmlNode(child.name())) };
 
-    for (auto node : child.nodes())
+    if (element)
     {
-        element->addCopy(*node);
+        element->set(child.text());
+
+        for (auto node : child.nodes())
+        {
+            element->addCopy(*node);
+        }
+
+        for (auto attribute : child.attributes())
+        {
+            element->set(*attribute);
+        }
     }
 
-    for (auto attribute : child.attributes())
-    {
-        element->set(*attribute);
-    }
+    return element;
 }
 
 void XmlElement::add(const XmlElement &child)
@@ -163,7 +170,7 @@ std::string XmlElement::text() const
             xercesc::DOMText & textNode =
                 dynamic_cast<xercesc::DOMText &>(child);
 
-            text.append(XercesString::convert(textNode.getWholeText()));
+            text.append(XercesString::convert(textNode.getNodeValue()));
         }
 
         return true; // return true to continue looping

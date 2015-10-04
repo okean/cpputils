@@ -109,6 +109,7 @@ namespace { XmlElementPtr   root; }
 TEST(Xml, CreateEmptyDoc)
 {
     ASSERT_NO_THROW(
+        title.reset();
         book.reset();
         catalog.reset();
         xml.reset());
@@ -189,8 +190,14 @@ TEST(Xml, AddXmlElement)
     XmlDocPtr xmldoc        { std::make_shared<XmlDoc>(content.str()) };
     XmlElementPtr element   { xmldoc->root() };
 
-    ASSERT_NO_THROW(root->addCopy(*element));
+    XmlElementPtr elementCopy;
+
+    ASSERT_NO_THROW(elementCopy  = root->addCopy(*element));
     EXPECT_EQ(3, root->nodes().size());
+    
+    XmlElementPtr child2{ elementCopy->get(XmlNode("child2")) };
+    ASSERT_NE(nullptr, child2);
+    EXPECT_EQ("value2", child2->text());
 
     ASSERT_NO_THROW(root->add(*element));
     EXPECT_EQ(3, root->nodes().size());
@@ -205,4 +212,11 @@ TEST(Xml, Serialize)
 {
     EXPECT_FALSE(root->toString().empty());
     EXPECT_FALSE(xml->toString().empty());
+}
+
+TEST(Xml, Dispose)
+{
+    child1.reset();
+    root.reset();
+    xml.reset();
 }
