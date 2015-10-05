@@ -116,6 +116,25 @@ XmlElementPtr XmlElement::get(const XmlNode &node) const
     return element;
 };
 
+XmlElementPtr XmlElement::find(const XmlNode &node) const
+{
+    XmlElementPtr found{ get(node) };
+
+    for (auto child : nodes())
+    {
+        if (!found)
+        {
+            found = child->find(node);
+        }
+        else
+        {
+            break;
+        }
+    }
+
+    return found;
+}
+
 XmlElementPtr XmlElement::add(const XmlNode &node)
 {
     if (Xercesc::DOMNode* child = xmlDoc()->createElement(XercesString(node.name())))

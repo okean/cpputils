@@ -185,6 +185,7 @@ TEST(Xml, AddXmlElement)
             << "<element id = \"obj01\">"
             << "<child1>value1</child1>"
             << "<child2>value2</child2>"
+            << "<child10>value10</child10>"
             << "</element>";
 
     XmlDocPtr xmldoc        { std::make_shared<XmlDoc>(content.str()) };
@@ -206,6 +207,20 @@ TEST(Xml, AddXmlElement)
 
     ASSERT_NO_THROW(root->add(*child3));
     EXPECT_EQ(4, root->nodes().size());
+}
+
+TEST(Xml, Find)
+{
+    ASSERT_NE(nullptr, root);
+
+    XmlElementPtr child10{ root->find(XmlNode("child10")) };
+    ASSERT_NE(nullptr, child10);
+    EXPECT_EQ("value10", child10->text());
+
+    child10->add(XmlNode("child10_1"));
+
+    XmlElementPtr child10_1{ root->find(XmlNode("child10_1")) };
+    EXPECT_NE(nullptr, child10_1);
 }
 
 TEST(Xml, Serialize)

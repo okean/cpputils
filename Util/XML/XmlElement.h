@@ -42,6 +42,7 @@ public: // interface
     XmlElementPtr       set(const std::string &text);
     std::string         name() const;
     XmlElementPtr       get(const XmlNode &node) const;
+    XmlElementPtr       find(const XmlNode &node) const;
     XmlElementPtr       add(const XmlNode &node);
     XmlElementPtr       addCopy(const XmlElement &child);
     void                add(const XmlElement &child);
