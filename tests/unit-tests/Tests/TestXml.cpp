@@ -186,6 +186,7 @@ TEST(Xml, AddXmlElement)
             << "<child1>value1</child1>"
             << "<child2>value2</child2>"
             << "<child10>value10</child10>"
+            << "<child10>value-idx</child10>"
             << "</element>";
 
     XmlDocPtr xmldoc        { std::make_shared<XmlDoc>(content.str()) };
@@ -216,6 +217,10 @@ TEST(Xml, Find)
     XmlElementPtr child10{ root->find(XmlNode("child10")) };
     ASSERT_NE(nullptr, child10);
     EXPECT_EQ("value10", child10->text());
+
+    XmlElementPtr child10Idx{ root->find(XmlNode("child10"), 1) };
+    ASSERT_NE(nullptr, child10Idx);
+    EXPECT_EQ("value-idx", child10Idx->text());
 
     child10->add(XmlNode("child10_1"));
 

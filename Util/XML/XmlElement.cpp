@@ -9,6 +9,7 @@
 #include <xercesc/dom/DOMDocument.hpp>
 #include <xercesc/dom/DOMNamedNodeMap.hpp>
 #include <algorithm>
+#include <cassert>
 
 using namespace Util;
 using namespace Util::XML;
@@ -116,23 +117,15 @@ XmlElementPtr XmlElement::get(const XmlNode &node) const
     return element;
 };
 
-XmlElementPtr XmlElement::find(const XmlNode &node) const
+XmlElementPtr XmlElement::find(const XmlNode &node, const size_t index) const
 {
-    XmlElementPtr found{ get(node) };
+    size_t count = 0;
 
-    for (auto child : nodes())
-    {
-        if (!found)
-        {
-            found = child->find(node);
-        }
-        else
-        {
-            break;
-        }
-    }
+    XmlElementPtr element = find(node, index, count);
 
-    return found;
+    assert(count <= index);
+
+    return element;
 }
 
 XmlElementPtr XmlElement::add(const XmlNode &node)
@@ -289,4 +282,35 @@ void XmlElement::forEachNode(
 XmlElement::DOMDocumentImpl * XmlElement::xmlDoc() const
 {
     return _impl.getOwnerDocument();
+}
+
+XmlElementPtr XmlElement::find(const XmlNode &node, const size_t index, size_t &count) const
+{
+    XmlElementPtr found{};
+
+    for (auto child : nodes())
+    {
+        if (found)
+        {
+            break;
+        }
+
+        if (child->name() == node.name())
+        {
+            if (index == count)
+            {
+                found = child;
+            }
+            else
+            {
+                count++;
+            }
+        }
+        else
+        {
+            found = child->find(node, index, count);
+        }
+    }
+
+    return found;
 }

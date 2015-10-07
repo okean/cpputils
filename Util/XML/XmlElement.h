@@ -42,7 +42,7 @@ public: // interface
     XmlElementPtr       set(const std::string &text);
     std::string         name() const;
     XmlElementPtr       get(const XmlNode &node) const;
-    XmlElementPtr       find(const XmlNode &node) const;
+    XmlElementPtr       find(const XmlNode &node, const size_t index = 0) const;
     XmlElementPtr       add(const XmlNode &node);
     XmlElementPtr       addCopy(const XmlElement &child);
     void                add(const XmlElement &child);
@@ -66,6 +66,7 @@ private: // internal class helpers
 private: // internal helpers
     void forEachNode(std::function<bool(DomNodeImpl &)> onNode) const;
     DOMDocumentImpl * xmlDoc() const;
+    XmlElementPtr find(const XmlNode &node, const size_t index, size_t &count) const;
 
 private: // member variables
     DomElementImpl &_impl;
