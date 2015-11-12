@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apache", "apache", "{2DED7AEB-6C95-401D-986E-3A176B61DC34}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "google", "google", "{4A26D726-126C-4446-B01D-877B85AE3EC9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "poco", "poco", "{3EAAEFF4-C2F4-49E9-B7DF-B8585BF46549}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xerces", "apache\xerces\xerces.vcxproj", "{B101D05B-C778-4DE1-B72C-2E40F4157598}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xsec", "apache\xsec\xsec.vcxproj", "{49651C37-7BC3-46C5-8383-AD00E277226D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gtest", "google\gtest\gtest.vcxproj", "{8B9468D4-D952-4369-8DCD-0A89C0183CD1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Foundation", "poco\Foundation\Foundation.vcxproj", "{8164D41D-B053-405B-826C-CF37AC0EF176}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B101D05B-C778-4DE1-B72C-2E40F4157598}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B101D05B-C778-4DE1-B72C-2E40F4157598}.Debug|Win32.Build.0 = Debug|Win32
+		{B101D05B-C778-4DE1-B72C-2E40F4157598}.Release|Win32.ActiveCfg = Release|Win32
+		{B101D05B-C778-4DE1-B72C-2E40F4157598}.Release|Win32.Build.0 = Release|Win32
+		{49651C37-7BC3-46C5-8383-AD00E277226D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{49651C37-7BC3-46C5-8383-AD00E277226D}.Debug|Win32.Build.0 = Debug|Win32
+		{49651C37-7BC3-46C5-8383-AD00E277226D}.Release|Win32.ActiveCfg = Release|Win32
+		{49651C37-7BC3-46C5-8383-AD00E277226D}.Release|Win32.Build.0 = Release|Win32
+		{8B9468D4-D952-4369-8DCD-0A89C0183CD1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8B9468D4-D952-4369-8DCD-0A89C0183CD1}.Debug|Win32.Build.0 = Debug|Win32
+		{8B9468D4-D952-4369-8DCD-0A89C0183CD1}.Release|Win32.ActiveCfg = Release|Win32
+		{8B9468D4-D952-4369-8DCD-0A89C0183CD1}.Release|Win32.Build.0 = Release|Win32
+		{8164D41D-B053-405B-826C-CF37AC0EF176}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8164D41D-B053-405B-826C-CF37AC0EF176}.Debug|Win32.Build.0 = Debug|Win32
+		{8164D41D-B053-405B-826C-CF37AC0EF176}.Release|Win32.ActiveCfg = Release|Win32
+		{8164D41D-B053-405B-826C-CF37AC0EF176}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B101D05B-C778-4DE1-B72C-2E40F4157598} = {2DED7AEB-6C95-401D-986E-3A176B61DC34}
+		{49651C37-7BC3-46C5-8383-AD00E277226D} = {2DED7AEB-6C95-401D-986E-3A176B61DC34}
+		{8B9468D4-D952-4369-8DCD-0A89C0183CD1} = {4A26D726-126C-4446-B01D-877B85AE3EC9}
+		{8164D41D-B053-405B-826C-CF37AC0EF176} = {3EAAEFF4-C2F4-49E9-B7DF-B8585BF46549}
+	EndGlobalSection
+EndGlobal

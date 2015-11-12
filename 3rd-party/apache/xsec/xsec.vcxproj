@@ -1,0 +1,461 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\xsec\canon\XSECC14n20010315.cpp" />
+    <ClCompile Include="src\xsec\canon\XSECCanon.cpp" />
+    <ClCompile Include="src\xsec\canon\XSECXMLNSStack.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGAlgorithmHandlerDefault.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGConstants.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGKeyInfoDEREncoded.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGKeyInfoExt.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGKeyInfoList.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGKeyInfoMgmtData.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGKeyInfoName.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGKeyInfoPGPData.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGKeyInfoSPKIData.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGKeyInfoValue.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGKeyInfoX509.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGObject.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGReference.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGReferenceList.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGSignature.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGSignedInfo.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGTransform.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGTransformBase64.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGTransformC14n.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGTransformEnvelope.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGTransformList.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGTransformXPath.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGTransformXPathFilter.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGTransformXSL.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGXPathFilterExpr.cpp" />
+    <ClCompile Include="src\xsec\dsig\DSIGXPathHere.cpp" />
+    <ClCompile Include="src\xsec\enc\NSS\NSSCryptoHash.cpp" />
+    <ClCompile Include="src\xsec\enc\NSS\NSSCryptoHashHMAC.cpp" />
+    <ClCompile Include="src\xsec\enc\NSS\NSSCryptoKeyDSA.cpp" />
+    <ClCompile Include="src\xsec\enc\NSS\NSSCryptoKeyHMAC.cpp" />
+    <ClCompile Include="src\xsec\enc\NSS\NSSCryptoKeyRSA.cpp" />
+    <ClCompile Include="src\xsec\enc\NSS\NSSCryptoProvider.cpp" />
+    <ClCompile Include="src\xsec\enc\NSS\NSSCryptoSymmetricKey.cpp" />
+    <ClCompile Include="src\xsec\enc\NSS\NSSCryptoX509.cpp" />
+    <ClCompile Include="src\xsec\enc\OpenSSL\OpenSSLCryptoBase64.cpp" />
+    <ClCompile Include="src\xsec\enc\OpenSSL\OpenSSLCryptoHash.cpp" />
+    <ClCompile Include="src\xsec\enc\OpenSSL\OpenSSLCryptoHashHMAC.cpp" />
+    <ClCompile Include="src\xsec\enc\OpenSSL\OpenSSLCryptoKeyDSA.cpp" />
+    <ClCompile Include="src\xsec\enc\OpenSSL\OpenSSLCryptoKeyEC.cpp" />
+    <ClCompile Include="src\xsec\enc\OpenSSL\OpenSSLCryptoKeyHMAC.cpp" />
+    <ClCompile Include="src\xsec\enc\OpenSSL\OpenSSLCryptoKeyRSA.cpp" />
+    <ClCompile Include="src\xsec\enc\OpenSSL\OpenSSLCryptoProvider.cpp" />
+    <ClCompile Include="src\xsec\enc\OpenSSL\OpenSSLCryptoSymmetricKey.cpp" />
+    <ClCompile Include="src\xsec\enc\OpenSSL\OpenSSLCryptoX509.cpp" />
+    <ClCompile Include="src\xsec\enc\WinCAPI\WinCAPICryptoHash.cpp" />
+    <ClCompile Include="src\xsec\enc\WinCAPI\WinCAPICryptoHashHMAC.cpp" />
+    <ClCompile Include="src\xsec\enc\WinCAPI\WinCAPICryptoKeyDSA.cpp" />
+    <ClCompile Include="src\xsec\enc\WinCAPI\WinCAPICryptoKeyHMAC.cpp" />
+    <ClCompile Include="src\xsec\enc\WinCAPI\WinCAPICryptoKeyRSA.cpp" />
+    <ClCompile Include="src\xsec\enc\WinCAPI\WinCAPICryptoProvider.cpp" />
+    <ClCompile Include="src\xsec\enc\WinCAPI\WinCAPICryptoSymmetricKey.cpp" />
+    <ClCompile Include="src\xsec\enc\WinCAPI\WinCAPICryptoX509.cpp" />
+    <ClCompile Include="src\xsec\enc\XSCrypt\XSCryptCryptoBase64.cpp" />
+    <ClCompile Include="src\xsec\enc\XSECCryptoBase64.cpp" />
+    <ClCompile Include="src\xsec\enc\XSECCryptoException.cpp" />
+    <ClCompile Include="src\xsec\enc\XSECCryptoProvider.cpp" />
+    <ClCompile Include="src\xsec\enc\XSECCryptoUtils.cpp" />
+    <ClCompile Include="src\xsec\enc\XSECCryptoX509.cpp" />
+    <ClCompile Include="src\xsec\enc\XSECKeyInfoResolverDefault.cpp" />
+    <ClCompile Include="src\xsec\framework\XSECAlgorithmMapper.cpp" />
+    <ClCompile Include="src\xsec\framework\XSECEnv.cpp" />
+    <ClCompile Include="src\xsec\framework\XSECError.cpp" />
+    <ClCompile Include="src\xsec\framework\XSECException.cpp" />
+    <ClCompile Include="src\xsec\framework\XSECProvider.cpp" />
+    <ClCompile Include="src\xsec\framework\XSECURIResolverXerces.cpp" />
+    <ClCompile Include="src\xsec\transformers\TXFMBase.cpp" />
+    <ClCompile Include="src\xsec\transformers\TXFMBase64.cpp" />
+    <ClCompile Include="src\xsec\transformers\TXFMC14n.cpp" />
+    <ClCompile Include="src\xsec\transformers\TXFMChain.cpp" />
+    <ClCompile Include="src\xsec\transformers\TXFMCipher.cpp" />
+    <ClCompile Include="src\xsec\transformers\TXFMConcatChains.cpp" />
+    <ClCompile Include="src\xsec\transformers\TXFMDocObject.cpp" />
+    <ClCompile Include="src\xsec\transformers\TXFMEnvelope.cpp" />
+    <ClCompile Include="src\xsec\transformers\TXFMMD5.cpp" />
+    <ClCompile Include="src\xsec\transformers\TXFMOutputFile.cpp" />
+    <ClCompile Include="src\xsec\transformers\TXFMParser.cpp" />
+    <ClCompile Include="src\xsec\transformers\TXFMSB.cpp" />
+    <ClCompile Include="src\xsec\transformers\TXFMSHA1.cpp" />
+    <ClCompile Include="src\xsec\transformers\TXFMURL.cpp" />
+    <ClCompile Include="src\xsec\transformers\TXFMXPath.cpp" />
+    <ClCompile Include="src\xsec\transformers\TXFMXPathFilter.cpp" />
+    <ClCompile Include="src\xsec\transformers\TXFMXSL.cpp" />
+    <ClCompile Include="src\xsec\utils\winutils\XSECBinHTTPURIInputStream.cpp" />
+    <ClCompile Include="src\xsec\utils\winutils\XSECSOAPRequestorSimpleWin32.cpp" />
+    <ClCompile Include="src\xsec\utils\winutils\XSECURIResolverGenericWin32.cpp" />
+    <ClCompile Include="src\xsec\utils\XSECBinTXFMInputStream.cpp" />
+    <ClCompile Include="src\xsec\utils\XSECDOMUtils.cpp" />
+    <ClCompile Include="src\xsec\utils\XSECNameSpaceExpander.cpp" />
+    <ClCompile Include="src\xsec\utils\XSECPlatformUtils.cpp" />
+    <ClCompile Include="src\xsec\utils\XSECSafeBuffer.cpp" />
+    <ClCompile Include="src\xsec\utils\XSECSafeBufferFormatter.cpp" />
+    <ClCompile Include="src\xsec\utils\XSECSOAPRequestorSimple.cpp" />
+    <ClCompile Include="src\xsec\utils\XSECTXFMInputSource.cpp" />
+    <ClCompile Include="src\xsec\utils\XSECXPathNodeList.cpp" />
+    <ClCompile Include="src\xsec\xenc\impl\XENCAlgorithmHandlerDefault.cpp" />
+    <ClCompile Include="src\xsec\xenc\impl\XENCCipherDataImpl.cpp" />
+    <ClCompile Include="src\xsec\xenc\impl\XENCCipherImpl.cpp" />
+    <ClCompile Include="src\xsec\xenc\impl\XENCCipherReferenceImpl.cpp" />
+    <ClCompile Include="src\xsec\xenc\impl\XENCCipherValueImpl.cpp" />
+    <ClCompile Include="src\xsec\xenc\impl\XENCEncryptedDataImpl.cpp" />
+    <ClCompile Include="src\xsec\xenc\impl\XENCEncryptedKeyImpl.cpp" />
+    <ClCompile Include="src\xsec\xenc\impl\XENCEncryptedTypeImpl.cpp" />
+    <ClCompile Include="src\xsec\xenc\impl\XENCEncryptionMethodImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSAuthenticationImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSCompoundRequestImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSCompoundResultImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSKeyBindingAbstractTypeImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSKeyBindingImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSLocateRequestImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSLocateResultImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSMessageAbstractTypeImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSMessageFactoryImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSNotBoundAuthentication.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSPendingRequestImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSPrototypeKeyBindingImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSQueryKeyBindingImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSRecoverKeyBindingImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSRecoverRequestImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSRecoverResultImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSRegisterRequestImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSRegisterResultImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSReissueKeyBindingImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSReissueRequestImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSReissueResultImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSRequestAbstractTypeImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSRespondWithImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSResponseMechanismImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSResultImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSResultTypeImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSRevokeKeyBindingImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSRevokeRequestImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSRevokeResultImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSRSAKeyPairImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSStatusImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSStatusRequestImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSStatusResultImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSUnverifiedKeyBindingImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSUseKeyWithImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSValidateRequestImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSValidateResultImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\impl\XKMSValidityIntervalImpl.cpp" />
+    <ClCompile Include="src\xsec\xkms\XKMSConstants.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\xsec\canon\XSECC14n20010315.hpp" />
+    <ClInclude Include="src\xsec\canon\XSECCanon.hpp" />
+    <ClInclude Include="src\xsec\canon\XSECXMLNSStack.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGAlgorithmHandlerDefault.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGConstants.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGKeyInfo.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGKeyInfoDEREncoded.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGKeyInfoExt.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGKeyInfoList.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGKeyInfoMgmtData.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGKeyInfoName.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGKeyInfoPGPData.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGKeyInfoSPKIData.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGKeyInfoValue.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGKeyInfoX509.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGObject.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGReference.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGReferenceList.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGSignature.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGSignedInfo.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGTransform.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGTransformBase64.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGTransformC14n.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGTransformEnvelope.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGTransformList.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGTransformXPath.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGTransformXPathFilter.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGTransformXSL.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGXPathFilterExpr.hpp" />
+    <ClInclude Include="src\xsec\dsig\DSIGXPathHere.hpp" />
+    <ClInclude Include="src\xsec\enc\NSS\NSSCryptoHash.hpp" />
+    <ClInclude Include="src\xsec\enc\NSS\NSSCryptoHashHMAC.hpp" />
+    <ClInclude Include="src\xsec\enc\NSS\NSSCryptoKeyDSA.hpp" />
+    <ClInclude Include="src\xsec\enc\NSS\NSSCryptoKeyHMAC.hpp" />
+    <ClInclude Include="src\xsec\enc\NSS\NSSCryptoKeyRSA.hpp" />
+    <ClInclude Include="src\xsec\enc\NSS\NSSCryptoProvider.hpp" />
+    <ClInclude Include="src\xsec\enc\NSS\NSSCryptoSymmetricKey.hpp" />
+    <ClInclude Include="src\xsec\enc\NSS\NSSCryptoX509.hpp" />
+    <ClInclude Include="src\xsec\enc\OpenSSL\OpenSSLCryptoBase64.hpp" />
+    <ClInclude Include="src\xsec\enc\OpenSSL\OpenSSLCryptoHash.hpp" />
+    <ClInclude Include="src\xsec\enc\OpenSSL\OpenSSLCryptoHashHMAC.hpp" />
+    <ClInclude Include="src\xsec\enc\OpenSSL\OpenSSLCryptoKeyDSA.hpp" />
+    <ClInclude Include="src\xsec\enc\OpenSSL\OpenSSLCryptoKeyEC.hpp" />
+    <ClInclude Include="src\xsec\enc\OpenSSL\OpenSSLCryptoKeyHMAC.hpp" />
+    <ClInclude Include="src\xsec\enc\OpenSSL\OpenSSLCryptoKeyRSA.hpp" />
+    <ClInclude Include="src\xsec\enc\OpenSSL\OpenSSLCryptoProvider.hpp" />
+    <ClInclude Include="src\xsec\enc\OpenSSL\OpenSSLCryptoSymmetricKey.hpp" />
+    <ClInclude Include="src\xsec\enc\OpenSSL\OpenSSLCryptoX509.hpp" />
+    <ClInclude Include="src\xsec\enc\WinCAPI\WinCAPICryptoHash.hpp" />
+    <ClInclude Include="src\xsec\enc\WinCAPI\WinCAPICryptoHashHMAC.hpp" />
+    <ClInclude Include="src\xsec\enc\WinCAPI\WinCAPICryptoKeyDSA.hpp" />
+    <ClInclude Include="src\xsec\enc\WinCAPI\WinCAPICryptoKeyHMAC.hpp" />
+    <ClInclude Include="src\xsec\enc\WinCAPI\WinCAPICryptoKeyRSA.hpp" />
+    <ClInclude Include="src\xsec\enc\WinCAPI\WinCAPICryptoProvider.hpp" />
+    <ClInclude Include="src\xsec\enc\WinCAPI\WinCAPICryptoSymmetricKey.hpp" />
+    <ClInclude Include="src\xsec\enc\WinCAPI\WinCAPICryptoX509.hpp" />
+    <ClInclude Include="src\xsec\enc\XSCrypt\XSCryptCryptoBase64.hpp" />
+    <ClInclude Include="src\xsec\enc\XSECCryptoBase64.hpp" />
+    <ClInclude Include="src\xsec\enc\XSECCryptoException.hpp" />
+    <ClInclude Include="src\xsec\enc\XSECCryptoHash.hpp" />
+    <ClInclude Include="src\xsec\enc\XSECCryptoKey.hpp" />
+    <ClInclude Include="src\xsec\enc\XSECCryptoKeyDSA.hpp" />
+    <ClInclude Include="src\xsec\enc\XSECCryptoKeyEC.hpp" />
+    <ClInclude Include="src\xsec\enc\XSECCryptoKeyHMAC.hpp" />
+    <ClInclude Include="src\xsec\enc\XSECCryptoKeyRSA.hpp" />
+    <ClInclude Include="src\xsec\enc\XSECCryptoProvider.hpp" />
+    <ClInclude Include="src\xsec\enc\XSECCryptoSymmetricKey.hpp" />
+    <ClInclude Include="src\xsec\enc\XSECCryptoUtils.hpp" />
+    <ClInclude Include="src\xsec\enc\XSECCryptoX509.hpp" />
+    <ClInclude Include="src\xsec\enc\XSECKeyInfoResolver.hpp" />
+    <ClInclude Include="src\xsec\enc\XSECKeyInfoResolverDefault.hpp" />
+    <ClInclude Include="src\xsec\framework\resource.h" />
+    <ClInclude Include="src\xsec\framework\XSECAlgorithmHandler.hpp" />
+    <ClInclude Include="src\xsec\framework\XSECAlgorithmMapper.hpp" />
+    <ClInclude Include="src\xsec\framework\XSECConfig.hpp" />
+    <ClInclude Include="src\xsec\framework\XSECDefs.hpp" />
+    <ClInclude Include="src\xsec\framework\XSECEnv.hpp" />
+    <ClInclude Include="src\xsec\framework\XSECError.hpp" />
+    <ClInclude Include="src\xsec\framework\XSECException.hpp" />
+    <ClInclude Include="src\xsec\framework\XSECProvider.hpp" />
+    <ClInclude Include="src\xsec\framework\XSECURIResolver.hpp" />
+    <ClInclude Include="src\xsec\framework\XSECURIResolverXerces.hpp" />
+    <ClInclude Include="src\xsec\framework\XSECVersion.hpp" />
+    <ClInclude Include="src\xsec\framework\XSECW32Config.hpp" />
+    <ClInclude Include="src\xsec\transformers\TXFMBase.hpp" />
+    <ClInclude Include="src\xsec\transformers\TXFMBase64.hpp" />
+    <ClInclude Include="src\xsec\transformers\TXFMC14n.hpp" />
+    <ClInclude Include="src\xsec\transformers\TXFMChain.hpp" />
+    <ClInclude Include="src\xsec\transformers\TXFMCipher.hpp" />
+    <ClInclude Include="src\xsec\transformers\TXFMConcatChains.hpp" />
+    <ClInclude Include="src\xsec\transformers\TXFMDocObject.hpp" />
+    <ClInclude Include="src\xsec\transformers\TXFMEnvelope.hpp" />
+    <ClInclude Include="src\xsec\transformers\TXFMMD5.hpp" />
+    <ClInclude Include="src\xsec\transformers\TXFMOutputFile.hpp" />
+    <ClInclude Include="src\xsec\transformers\TXFMParser.hpp" />
+    <ClInclude Include="src\xsec\transformers\TXFMSB.hpp" />
+    <ClInclude Include="src\xsec\transformers\TXFMSHA1.hpp" />
+    <ClInclude Include="src\xsec\transformers\TXFMURL.hpp" />
+    <ClInclude Include="src\xsec\transformers\TXFMXPath.hpp" />
+    <ClInclude Include="src\xsec\transformers\TXFMXPathFilter.hpp" />
+    <ClInclude Include="src\xsec\transformers\TXFMXSL.hpp" />
+    <ClInclude Include="src\xsec\utils\winutils\XSECBinHTTPURIInputStream.hpp" />
+    <ClInclude Include="src\xsec\utils\winutils\XSECURIResolverGenericWin32.hpp" />
+    <ClInclude Include="src\xsec\utils\XSECAutoPtr.hpp" />
+    <ClInclude Include="src\xsec\utils\XSECBinTXFMInputStream.hpp" />
+    <ClInclude Include="src\xsec\utils\XSECDOMUtils.hpp" />
+    <ClInclude Include="src\xsec\utils\XSECNameSpaceExpander.hpp" />
+    <ClInclude Include="src\xsec\utils\XSECPlatformUtils.hpp" />
+    <ClInclude Include="src\xsec\utils\XSECSafeBuffer.hpp" />
+    <ClInclude Include="src\xsec\utils\XSECSafeBufferFormatter.hpp" />
+    <ClInclude Include="src\xsec\utils\XSECSOAPRequestor.hpp" />
+    <ClInclude Include="src\xsec\utils\XSECSOAPRequestorSimple.hpp" />
+    <ClInclude Include="src\xsec\utils\XSECTXFMInputSource.hpp" />
+    <ClInclude Include="src\xsec\utils\XSECXPathNodeList.hpp" />
+    <ClInclude Include="src\xsec\xenc\impl\XENCAlgorithmHandlerDefault.hpp" />
+    <ClInclude Include="src\xsec\xenc\impl\XENCCipherDataImpl.hpp" />
+    <ClInclude Include="src\xsec\xenc\impl\XENCCipherImpl.hpp" />
+    <ClInclude Include="src\xsec\xenc\impl\XENCCipherReferenceImpl.hpp" />
+    <ClInclude Include="src\xsec\xenc\impl\XENCCipherValueImpl.hpp" />
+    <ClInclude Include="src\xsec\xenc\impl\XENCEncryptedDataImpl.hpp" />
+    <ClInclude Include="src\xsec\xenc\impl\XENCEncryptedKeyImpl.hpp" />
+    <ClInclude Include="src\xsec\xenc\impl\XENCEncryptedTypeImpl.hpp" />
+    <ClInclude Include="src\xsec\xenc\impl\XENCEncryptionMethodImpl.hpp" />
+    <ClInclude Include="src\xsec\xenc\XENCCipher.hpp" />
+    <ClInclude Include="src\xsec\xenc\XENCCipherData.hpp" />
+    <ClInclude Include="src\xsec\xenc\XENCCipherReference.hpp" />
+    <ClInclude Include="src\xsec\xenc\XENCCipherValue.hpp" />
+    <ClInclude Include="src\xsec\xenc\XENCEncryptedData.hpp" />
+    <ClInclude Include="src\xsec\xenc\XENCEncryptedKey.hpp" />
+    <ClInclude Include="src\xsec\xenc\XENCEncryptedType.hpp" />
+    <ClInclude Include="src\xsec\xenc\XENCEncryptionMethod.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSAuthenticationImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSCompoundRequestImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSCompoundResultImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSKeyBindingAbstractTypeImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSKeyBindingImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSLocateRequestImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSLocateResultImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSMessageAbstractTypeImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSMessageFactoryImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSNotBoundAuthenticationImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSPendingRequestImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSPrototypeKeyBindingImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSQueryKeyBindingImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSRecoverKeyBindingImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSRecoverRequestImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSRecoverResultImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSRegisterRequestImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSRegisterResultImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSReissueKeyBindingImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSReissueRequestImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSReissueResultImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSRequestAbstractTypeImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSRespondWithImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSResponseMechanismImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSResultImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSResultTypeImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSRevokeKeyBindingImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSRevokeRequestImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSRevokeResultImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSRSAKeyPairImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSStatusImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSStatusRequestImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSStatusResultImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSUnverifiedKeyBindingImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSUseKeyWithImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSValidateRequestImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSValidateResultImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\impl\XKMSValidityIntervalImpl.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSAuthentication.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSCompoundRequest.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSCompoundResult.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSConstants.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSKeyBinding.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSKeyBindingAbstractType.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSLocateRequest.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSLocateResult.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSMessageAbstractType.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSMessageFactory.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSNotBoundAuthentication.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSPendingRequest.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSPrototypeKeyBinding.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSQueryKeyBinding.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSRecoverKeyBinding.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSRecoverRequest.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSRecoverResult.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSRegisterRequest.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSRegisterResult.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSReissueKeyBinding.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSReissueRequest.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSReissueResult.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSRequestAbstractType.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSRespondWith.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSResponseMechanism.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSResult.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSResultType.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSRevokeKeyBinding.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSRevokeRequest.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSRevokeResult.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSRSAKeyPair.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSStatus.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSStatusRequest.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSStatusResult.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSUnverifiedKeyBinding.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSUseKeyWith.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSValidateRequest.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSValidateResult.hpp" />
+    <ClInclude Include="src\xsec\xkms\XKMSValidityInterval.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="src\xsec\framework\version.rc" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{49651C37-7BC3-46C5-8383-AD00E277226D}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>xsec</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)lib\$(PlatformToolset)\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)tmp\$(ProjectName)\$(PlatformToolset)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)lib\$(PlatformToolset)\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)tmp\$(ProjectName)\$(PlatformToolset)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>XERCES_STATIC_LIBRARY;XERCES_BUILDING_LIBRARY;PROJ_CANON;PROJ_DSIG;_CRT_SECURE_NO_DEPRECATE;WIN32;_WINDOWS;_XSEC_DO_MEMDEBUG;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>false</SDLCheck>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BrowseInformation>true</BrowseInformation>
+      <DisableSpecificWarnings>4005</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)apache\xerces\src;$(SolutionDir)ssl\OpenSSL\include\$(Platform);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile />
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>XERCES_STATIC_LIBRARY;XERCES_BUILDING_LIBRARY;PROJ_CANON;PROJ_DSIG;_CRT_SECURE_NO_DEPRECATE;WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>false</SDLCheck>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <DisableSpecificWarnings>4005</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)apache\xerces\src;$(SolutionDir)ssl\OpenSSL\include\$(Platform);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

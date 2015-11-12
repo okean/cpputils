@@ -56,7 +56,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>XERCES_STATIC_LIBRARY;WIN32;_XSEC_DO_MEMDEBUG;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(ProjectDir);$(SolutionDir)3rd-party\gtest\include\;$(SolutionDir)3rd-party\xerces\src;$(SolutionDir)3rd-party\ssl\OpenSSL\include\$(Platform);$(SolutionDir)3rd-party\apache\xsec\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(ProjectDir);$(SolutionDir)3rd-party\google\gtest\include\;$(SolutionDir)3rd-party\apache\xerces\src;$(SolutionDir)3rd-party\ssl\OpenSSL\include\$(Platform);$(SolutionDir)3rd-party\apache\xsec\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>SyncCThrow</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -78,7 +78,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>XERCES_STATIC_LIBRARY;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(ProjectDir);$(SolutionDir)3rd-party\gtest\include\;$(SolutionDir)3rd-party\xerces\src;$(SolutionDir)3rd-party\ssl\OpenSSL\include\$(Platform);$(SolutionDir)3rd-party\apache\xsec\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(ProjectDir);$(SolutionDir)3rd-party\google\gtest\include\;$(SolutionDir)3rd-party\apache\xerces\src;$(SolutionDir)3rd-party\ssl\OpenSSL\include\$(Platform);$(SolutionDir)3rd-party\apache\xsec\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <StringPooling>true</StringPooling>
