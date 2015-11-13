@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClInclude Include="NonCopyable.hpp" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="XML\Sec\X509Cert.h" />
     <ClInclude Include="XML\XercesString.h" />
     <ClInclude Include="XML\Xml.hpp" />
     <ClInclude Include="XML\XmlAttribute.h" />
@@ -27,6 +28,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="XML\Sec\X509Cert.cpp" />
     <ClCompile Include="XML\XercesString.cpp" />
     <ClCompile Include="XML\XmlAttribute.cpp" />
     <ClCompile Include="XML\XmlDoc.cpp" />
@@ -76,8 +78,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;XERCES_BUILDING_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir);$(SolutionDir)3rd-party\apache\xerces\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;XERCES_STATIC_LIBRARY;_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir);$(SolutionDir)3rd-party\apache\xerces\src;$(SolutionDir)3rd-party\apache\xsec\src;$(SolutionDir)3rd-party\ssl\OpenSSL\include\$(Platform)</AdditionalIncludeDirectories>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <SDLCheck>true</SDLCheck>
@@ -97,8 +99,8 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;SECURITY_WIN32;_LIB;_NO_ASYNCRTIMP;XERCES_BUILDING_LIBRARY;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir);$(SolutionDir)3rd-party\apache\xerces\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;XERCES_STATIC_LIBRARY;_LIB;SECURITY_WIN32;_NO_ASYNCRTIMP;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir);$(SolutionDir)3rd-party\apache\xerces\src;$(SolutionDir)3rd-party\apache\xsec\src;$(SolutionDir)3rd-party\ssl\OpenSSL\include\$(Platform)</AdditionalIncludeDirectories>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <SDLCheck>true</SDLCheck>

@@ -7,6 +7,9 @@
     <Filter Include="Infrastructure">
       <UniqueIdentifier>{1f468556-34c7-44d4-a67b-2d386f231368}</UniqueIdentifier>
     </Filter>
+    <Filter Include="XML\Sec">
+      <UniqueIdentifier>{127fded5-38ba-41d7-8402-cf07e89c3167}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="XML\XmlDoc.h">
@@ -37,6 +40,9 @@
     <ClInclude Include="XML\XmlDependencies.hpp">
       <Filter>XML</Filter>
     </ClInclude>
+    <ClInclude Include="XML\Sec\X509Cert.h">
+      <Filter>XML\Sec</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="XML\XmlPlatform.cpp">
@@ -59,6 +65,9 @@
     </ClCompile>
     <ClCompile Include="XML\XmlNode.cpp">
       <Filter>XML</Filter>
+    </ClCompile>
+    <ClCompile Include="XML\Sec\X509Cert.cpp">
+      <Filter>XML\Sec</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

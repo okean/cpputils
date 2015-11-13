@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include <Util/XML/Sec/X509Cert.h>
+
 #include <iostream>
 
 #include <xsec/utils/XSECPlatformUtils.hpp>
@@ -14,8 +16,15 @@
 #include <xercesc/parsers/XercesDOMParser.hpp>
 #include <xercesc/framework/MemBufInputSource.hpp>
 
+using namespace Util::XML::Sec;
+
 XERCES_CPP_NAMESPACE_USE
 using namespace std;
+
+namespace
+{
+    X509CertPtr x509Cert;
+}
 
 char docToValidate[4096] = "\
 <Letter>\n\
@@ -45,7 +54,7 @@ IjJY9p2mrI9W5Z+ic0N7wXlt4JJSSytH3v3q8RgDJnk=\n\
 </ds:Signature>\n\
 </Letter>\n";
     
-char cert[] = "\n\
+const std::string cert = "\n\
 MIIC7jCCAq6gAwIBAgICEAMwCQYHKoZIzjgEAzB5MQswCQYDVQQGEwJBVTEMMAoG\n\
 A1UECBMDVmljMRIwEAYDVQQHEwlNZWxib3VybmUxHzAdBgNVBAoTFlhNTC1TZWN1\n\
 cml0eS1DIFByb2plY3QxEDAOBgNVBAsTB1hTRUMtQ0ExFTATBgNVBAMTDFhTRUMt\n\
@@ -108,7 +117,7 @@ TEST(XmlSec, Sanity)
     {
         // Load certificate
         OpenSSLCryptoX509 * x509 = new OpenSSLCryptoX509();
-        x509->loadX509Base64Bin(cert, (unsigned int)strlen(cert));
+        x509->loadX509Base64Bin(cert.c_str(), cert.size());
         sig->load();
         sig->setSigningKey(x509->clonePublicKey());
 
@@ -138,4 +147,24 @@ TEST(XmlSec, Sanity)
     // Clean up
     delete memIS;
     delete parser;
+}
+
+TEST(XmlSec, Initialization)
+{
+    ASSERT_NO_THROW(
+        x509Cert = std::make_shared<X509Cert>(cert);
+        );
+}
+
+namespace
+{
+    const std::string issuer{ "/C=AU/ST=Vic/L=Melbourne/O=XML-Security-C Project/OU=XSEC-CA/CN=XSEC-CA Root" };
+}
+
+TEST(XmlSec, X509CertAttributes)
+{
+    ASSERT_NE(nullptr, x509Cert);
+
+    EXPECT_EQ(cert      , x509Cert->base64Encoded());
+    EXPECT_EQ(issuer    , x509Cert->issuer());
 }
