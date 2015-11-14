@@ -1,8 +1,10 @@
 #include "stdafx.h"
 #include "X509Cert.h"
+#include <Util/Text.h>
 #include <xsec/enc/OpenSSL/OpenSSLCryptoX509.hpp>
 #include <openssl/x509.h>
 
+using namespace Util;
 using namespace Util::XML::Sec;
 
 X509Cert::X509Cert(const std::string &base64Encoded)
@@ -43,6 +45,10 @@ std::string X509Cert::getIssuer(X509 * x509)
 {
     std::string issuer{ 
         X509_NAME_oneline(X509_get_issuer_name(x509), NULL, 0) };
+
+    // convert issuer into a more traditional looking DN
+    issuer.erase(0, 1);
+    Text::replaceAll(issuer, "/", ", ");
 
     return issuer;
 }

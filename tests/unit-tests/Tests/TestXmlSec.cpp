@@ -53,8 +53,10 @@ IjJY9p2mrI9W5Z+ic0N7wXlt4JJSSytH3v3q8RgDJnk=\n\
 </ds:SignatureValue>\n\
 </ds:Signature>\n\
 </Letter>\n";
-    
-const std::string cert = "\n\
+
+namespace 
+{
+    const std::string cert = "\n\
 MIIC7jCCAq6gAwIBAgICEAMwCQYHKoZIzjgEAzB5MQswCQYDVQQGEwJBVTEMMAoG\n\
 A1UECBMDVmljMRIwEAYDVQQHEwlNZWxib3VybmUxHzAdBgNVBAoTFlhNTC1TZWN1\n\
 cml0eS1DIFByb2plY3QxEDAOBgNVBAsTB1hTRUMtQ0ExFTATBgNVBAMTDFhTRUMt\n\
@@ -71,6 +73,7 @@ VQQGEwJBVTEMMAoGA1UECBMDVmljMRIwEAYDVQQHEwlNZWxib3VybmUxHzAdBgNV\n\
 BAoTFlhNTC1TZWN1cml0eS1DIFByb2plY3QxEDAOBgNVBAsTB1hTRUMtQ0ExFTAT\n\
 BgNVBAMTDFhTRUMtQ0EgUm9vdIIBADAJBgcqhkjOOAQDAy8AMCwCFGoKhVPnDeg9\n\
 nbEFo2KDDlG/NiUqAhRJxQPLXDhehQjn6eqQWOUlkFtA9A==";
+}
 
 TEST(XmlSec, Sanity)
 {
@@ -158,7 +161,7 @@ TEST(XmlSec, Initialization)
 
 namespace
 {
-    const std::string issuer{ "/C=AU/ST=Vic/L=Melbourne/O=XML-Security-C Project/OU=XSEC-CA/CN=XSEC-CA Root" };
+    const std::string issuer{ "C=AU, ST=Vic, L=Melbourne, O=XML-Security-C Project, OU=XSEC-CA, CN=XSEC-CA Root" };
 }
 
 TEST(XmlSec, X509CertAttributes)

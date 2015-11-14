@@ -43,6 +43,7 @@
     <ClInclude Include="XML\Sec\X509Cert.h">
       <Filter>XML\Sec</Filter>
     </ClInclude>
+    <ClInclude Include="Text.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="XML\XmlPlatform.cpp">
@@ -69,5 +70,6 @@
     <ClCompile Include="XML\Sec\X509Cert.cpp">
       <Filter>XML\Sec</Filter>
     </ClCompile>
+    <ClCompile Include="Text.cpp" />
   </ItemGroup>
 </Project>
