@@ -162,12 +162,20 @@ TEST(XmlSec, Initialization)
 namespace
 {
     const std::string issuer{ "C=AU, ST=Vic, L=Melbourne, O=XML-Security-C Project, OU=XSEC-CA, CN=XSEC-CA Root" };
+    const std::string serial{ "4099" };
+    const std::string algorithm{ "rsaEncryption" };
 }
 
 TEST(XmlSec, X509CertAttributes)
 {
     ASSERT_NE(nullptr, x509Cert);
 
+    //ASSERT_TRUE(x509Cert->isValid());
+
     EXPECT_EQ(cert      , x509Cert->base64Encoded());
     EXPECT_EQ(issuer    , x509Cert->issuer());
+    EXPECT_EQ(serial    , x509Cert->serial());
+    EXPECT_EQ(algorithm , X509Cert::algorithmToString(x509Cert->signatureAlgorithm()));
+    EXPECT_EQ(3         , x509Cert->version());
+    EXPECT_EQ(0         , x509Cert->status());
 }
