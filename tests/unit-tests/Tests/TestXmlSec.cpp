@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include <Util/XML/Sec/X509Cert.h>
+#include <Util/XML/Sec/RsaKey.h>
 
 #include <iostream>
 
@@ -24,6 +25,7 @@ using namespace std;
 namespace
 {
     X509CertPtr x509Cert;
+    RsaKeyPtr   rsaKey;
 }
 
 char docToValidate[4096] = "\
@@ -73,6 +75,23 @@ VQQGEwJBVTEMMAoGA1UECBMDVmljMRIwEAYDVQQHEwlNZWxib3VybmUxHzAdBgNV\n\
 BAoTFlhNTC1TZWN1cml0eS1DIFByb2plY3QxEDAOBgNVBAsTB1hTRUMtQ0ExFTAT\n\
 BgNVBAMTDFhTRUMtQ0EgUm9vdIIBADAJBgcqhkjOOAQDAy8AMCwCFGoKhVPnDeg9\n\
 nbEFo2KDDlG/NiUqAhRJxQPLXDhehQjn6eqQWOUlkFtA9A==";
+
+    const std::string privKey = "\n\
+-----BEGIN RSA PRIVATE KEY-----\n\
+MIICXAIBAAKBgQDQj3pktZckAzwshRnfvLhz3daNU6xpAzoHo3qjCftxDwH1RynP\n\
+A5eycJVkV8mwH2C1PFktpjtQTZ2CvPjuKmUV5zEvmYzuIo6SWYaVZN/PJjzsEZMa\n\
+VA+U8GhfX1YF/rsuFzXCi8r6FVd3LN//pXHEwoDGdJUdlpdVEuX1iFKlNQIDAQAB\n\
+AoGAYQ7Uc7e6Xa0PvNw4XVHzOSC870pISxqQT+u5b9R+anAEhkQW5dsTJpyUOX1N\n\
+RCRmGhG6oq7gnY9xRN1yr0uVfJNtc9/HnzJL7L1jeJC8Ub+zbEBvNuPDL2P21ArW\n\
+tcXRycUlfRCRBLop7rfOYPXsjtboAGnQY/6hK4rOF4XGrQUCQQD3Euj+0mZqRRZ4\n\
+M1yN2wVP0mKOMg2i/HZXaNeVd9X/wyBgK6b7BxHf6onf/mIBWnJnRBlvdCrSdhuT\n\
+lPKEoSgvAkEA2BhfWwQihqD4qJcV65nfosjzOZG41rHX69nIqHI7Ejx5ZgeQByH9\n\
+Ym96yXoSpZj9ZlFsJYNogTBBnUBjs+jL2wJAFjpVS9eR7y2X/+hfA0QZDj1XMIPA\n\
+RlGANAzymDfXwNLFLuG+fAb+zK5FCSnRl12TvUabIzPIRnbptDVKPDRjcQJBALn8\n\
+0CVv+59P8HR6BR3QRBDBT8Xey+3NB4Aw42lHV9wsPHg6ThY1hPYx6MZ70IzCjmZ/\n\
+8cqfvVRjijWj86wm0z0CQFKfRfBRraOZqfmOiAB4+ILhbJwKBBO6avX9TPgMYkyN\n\
+mWKCxS+9fPiy1iI+G+B9xkw2gJ9i8P81t7fsOvdTDFA=\n\
+-----END RSA PRIVATE KEY-----";
 }
 
 TEST(XmlSec, Sanity)
@@ -155,8 +174,9 @@ TEST(XmlSec, Sanity)
 TEST(XmlSec, Initialization)
 {
     ASSERT_NO_THROW(
-        x509Cert = std::make_shared<X509Cert>(cert);
-        );
+        x509Cert    = std::make_shared<X509Cert>(cert);
+        rsaKey      = std::make_shared<RsaKey>(privKey);
+    );
 }
 
 namespace
@@ -178,4 +198,12 @@ TEST(XmlSec, X509CertAttributes)
     EXPECT_EQ(algorithm , X509Cert::algorithmToString(x509Cert->signatureAlgorithm()));
     EXPECT_EQ(3         , x509Cert->version());
     EXPECT_EQ(0         , x509Cert->status());
+}
+
+TEST(XmlSec, RsaKey)
+{
+    ASSERT_NE(nullptr, rsaKey);
+    EXPECT_NE(nullptr, *rsaKey);
+    
+    EXPECT_EQ(privKey   , rsaKey->base64Encoded());
 }

@@ -14,6 +14,7 @@
     <ClInclude Include="NonCopyable.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Text.h" />
+    <ClInclude Include="XML\Sec\RsaKey.h" />
     <ClInclude Include="XML\Sec\X509Cert.h" />
     <ClInclude Include="XML\XercesString.h" />
     <ClInclude Include="XML\Xml.hpp" />
@@ -30,6 +31,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Text.cpp" />
+    <ClCompile Include="XML\Sec\RsaKey.cpp" />
     <ClCompile Include="XML\Sec\X509Cert.cpp" />
     <ClCompile Include="XML\XercesString.cpp" />
     <ClCompile Include="XML\XmlAttribute.cpp" />

@@ -44,6 +44,9 @@
       <Filter>XML\Sec</Filter>
     </ClInclude>
     <ClInclude Include="Text.h" />
+    <ClInclude Include="XML\Sec\RsaKey.h">
+      <Filter>XML\Sec</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="XML\XmlPlatform.cpp">
@@ -71,5 +74,8 @@
       <Filter>XML\Sec</Filter>
     </ClCompile>
     <ClCompile Include="Text.cpp" />
+    <ClCompile Include="XML\Sec\RsaKey.cpp">
+      <Filter>XML\Sec</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
