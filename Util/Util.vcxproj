@@ -24,6 +24,8 @@
     <ClInclude Include="XML\XmlElement.h" />
     <ClInclude Include="XML\XmlNode.h" />
     <ClInclude Include="XML\XmlPlatform.h" />
+    <ClInclude Include="XML\XmlSecPlatform.h" />
+    <ClInclude Include="XML\XmlSignature.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -39,6 +41,8 @@
     <ClCompile Include="XML\XmlElement.cpp" />
     <ClCompile Include="XML\XmlNode.cpp" />
     <ClCompile Include="XML\XmlPlatform.cpp" />
+    <ClCompile Include="XML\XmlSecPlatform.cpp" />
+    <ClCompile Include="XML\XmlSignature.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{01C0DDAF-346B-4234-B608-06D9E50AA525}</ProjectGuid>

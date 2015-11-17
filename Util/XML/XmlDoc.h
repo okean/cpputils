@@ -25,6 +25,8 @@ public: // interface
     XmlElementPtr root() const;
     std::string toString() const;
 
+    operator Xercesc::DOMDocument * () const;
+
 private: // internal typedefs
     typedef Xercesc::XercesDOMParser        XmlDom;
     typedef std::unique_ptr<XmlDom>         XmlDomPtr;

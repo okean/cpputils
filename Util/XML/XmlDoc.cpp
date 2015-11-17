@@ -30,6 +30,11 @@ std::string XmlDoc::toString() const
     return XercesString::serialize(xmlDoc());
 }
 
+XmlDoc::operator Xercesc::DOMDocument *() const
+{
+    return xmlDoc();
+}
+
 // internal class helpers
 
 XmlDoc::XmlDomPtr XmlDoc::createXmlDomParser(const std::string &content)
