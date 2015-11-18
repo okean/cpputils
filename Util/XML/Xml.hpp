@@ -5,3 +5,4 @@
 #include <Util/XML/XmlElement.h>
 #include <Util/XML/XmlAttribute.h>
 #include <Util/XML/XmlNode.h>
+#include <Util/XML/XmlSignature.h>

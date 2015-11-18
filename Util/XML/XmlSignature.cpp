@@ -1,11 +1,14 @@
 #include "stdafx.h"
 #include "XmlSignature.h"
 #include "XmlDoc.h"
+#include "XercesString.h"
 #include "Sec/X509Cert.h"
 #include "Sec/RsaKey.h"
 #include <xsec/framework/XSECProvider.hpp>
 #include <xsec/framework/XSECException.hpp>
 #include <xsec/dsig/DSIGSignature.hpp>
+#include <xsec/enc/OpenSSL/OpenSSLCryptoKeyRSA.hpp>
+#include <xsec/enc/XSECCryptoException.hpp>
 
 using namespace Util::XML;
 using namespace Util::XML::Sec;
@@ -29,11 +32,34 @@ const std::string & XmlSignature::error() const
     return _error;
 }
 
-bool XmlSignature::validate(
-    const RsaKey &key,
-    const std::string &errMsg)
+bool XmlSignature::validate(const RsaKey &key)
 {
-    return false;
+    bool validate = false;
+
+    try
+    {
+        _signature->setSigningKey(key);
+
+        validate = _signature->verify();
+        
+        if (!validate)
+        {
+            _error = "Invalid signature:"
+                + XercesString::convert(_signature->getErrMsgs());
+        }
+    }
+    catch (XSECException &ex)
+    {
+        _error = "An error occured during signature validation: "
+            + XercesString::convert(ex.getMsg());
+    }
+    catch (XSECCryptoException &ex)
+    {
+        _error = "An error occured in the XML-Security-C Crypto routines: "
+            + std::string(ex.getMsg());
+    }
+
+    return validate;
 }
 
 // internal static helpers

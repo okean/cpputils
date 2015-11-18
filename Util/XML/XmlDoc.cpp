@@ -50,8 +50,8 @@ XmlDoc::XmlDomPtr XmlDoc::createXmlDomParser(const std::string &content)
 
 
         xml->setValidationScheme(xercesc::XercesDOMParser::Val_Never);
-        xml->setDoNamespaces(false);
-        xml->setDoSchema(false);
+        xml->setDoNamespaces(true);
+        xml->setDoSchema(true);
         xml->setLoadExternalDTD(false);
 
         xml->parse(buf);

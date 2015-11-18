@@ -20,9 +20,7 @@ public:
 public: // interface
     const std::string & error() const;
 
-    bool validate(
-        const Sec::RsaKey &key,
-        const std::string &errMsg);
+    bool validate(const Sec::RsaKey &key);
 
 private: // internal typedef 
     typedef DSIGSignature       *SignaturePtr;
