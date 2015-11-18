@@ -53,6 +53,9 @@
     <ClInclude Include="XML\XmlSignature.h">
       <Filter>XML</Filter>
     </ClInclude>
+    <ClInclude Include="XML\Sec\Key.h">
+      <Filter>XML\Sec</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="XML\XmlPlatform.cpp">
@@ -88,6 +91,9 @@
     </ClCompile>
     <ClCompile Include="XML\XmlSignature.cpp">
       <Filter>XML</Filter>
+    </ClCompile>
+    <ClCompile Include="XML\Sec\Key.cpp">
+      <Filter>XML\Sec</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@
 #include "XmlDoc.h"
 #include "XercesString.h"
 #include "Sec/X509Cert.h"
-#include "Sec/RsaKey.h"
+#include "Sec/Key.h"
 #include <xsec/framework/XSECProvider.hpp>
 #include <xsec/framework/XSECException.hpp>
 #include <xsec/dsig/DSIGSignature.hpp>
@@ -32,7 +32,7 @@ const std::string & XmlSignature::error() const
     return _error;
 }
 
-bool XmlSignature::validate(const RsaKey &key)
+bool XmlSignature::validate(const Key &key)
 {
     bool validate = false;
 
@@ -44,8 +44,7 @@ bool XmlSignature::validate(const RsaKey &key)
         
         if (!validate)
         {
-            _error = "Invalid signature:"
-                + XercesString::convert(_signature->getErrMsgs());
+            _error = XercesString::convert(_signature->getErrMsgs());
         }
     }
     catch (XSECException &ex)

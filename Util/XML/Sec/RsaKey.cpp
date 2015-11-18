@@ -7,8 +7,8 @@
 using namespace Util::XML::Sec;
 
 RsaKey::RsaKey(const std::string &base64Encoded)
-    : _rsaKey{ createRsaKey(base64Encoded) }
-    , _base64Encoded(base64Encoded)
+    : Key       { base64Encoded }
+    , _rsaKey   { createRsaKey(base64Encoded) }
 {
 }
 
@@ -18,14 +18,9 @@ RsaKey::~RsaKey()
 
 // interface
 
-RsaKey::operator OpenSSLCryptoKeyRSA * () const
+RsaKey::operator XSECCryptoKey * () const
 {
-    return static_cast<OpenSSLCryptoKeyRSA*>(_rsaKey->clone());
-}
-
-const std::string & RsaKey::base64Encoded() const
-{
-    return _base64Encoded;
+    return _rsaKey->clone();
 }
 
 // internal static helpers

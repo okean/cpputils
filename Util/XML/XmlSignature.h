@@ -9,7 +9,7 @@ namespace XML {
 
 class XmlDoc;
 
-namespace Sec { class RsaKey; }
+namespace Sec { class Key; }
 
 class XmlSignature : public XmlSecPlatform
 {
@@ -20,7 +20,7 @@ public:
 public: // interface
     const std::string & error() const;
 
-    bool validate(const Sec::RsaKey &key);
+    bool validate(const Sec::Key &key);
 
 private: // internal typedef 
     typedef DSIGSignature       *SignaturePtr;

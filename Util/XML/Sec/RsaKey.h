@@ -1,24 +1,23 @@
 #pragma once
 
-#include <string>
+#include "Key.h"
 #include <memory>
 
+class XSECCryptoKey;
 class OpenSSLCryptoKeyRSA;
 
 namespace Util {
 namespace XML {
 namespace Sec {
 
-class RsaKey
+class RsaKey : public Key 
 {
 public:
     RsaKey(const std::string &base64Encoded);
-    ~RsaKey();
+    virtual ~RsaKey();
 
 public: // interface
-    operator OpenSSLCryptoKeyRSA * () const;
-
-    const std::string & base64Encoded() const;
+    operator XSECCryptoKey * () const;
 
 private: // internal typedefs
     typedef OpenSSLCryptoKeyRSA             RsaKeyImpl;
@@ -29,7 +28,6 @@ private: // internal class helpers
 
 private: // member variables
     RsaKeyImplPtr   _rsaKey;
-    std::string     _base64Encoded;
 };
 
 typedef std::shared_ptr<RsaKey>     RsaKeyPtr;
