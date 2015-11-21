@@ -76,6 +76,17 @@ IjJY9p2mrI9W5Z+ic0N7wXlt4JJSSytH3v3q8RgDJnk=\n\
 </ds:SignatureValue>\n\
 </ds:Signature>\n\
 </Letter>\n";
+
+    const std::string xmlToSign = "\
+<Letter>\n\
+<ToAddress>The address of the Recipient</ToAddress>\n\
+<FromAddress>The address of the Sender</FromAddress>\n\
+<Text>\n\
+To whom it may concern\n\
+\n\
+...\n\
+</Text>\n\
+</Letter>\n";
 }
 
 TEST(XmlSec, Initialization)
@@ -127,4 +138,33 @@ TEST(XmlSec, ValidateSignature)
 
     EXPECT_TRUE(signature->validate(*rsaKey));
     EXPECT_EQ("", signature->error());
+}
+
+namespace { XmlDocPtr docToSign; }
+
+TEST(XmlSec, SignXmlDoc)
+{
+    XmlSignaturePtr signature{};
+
+    docToSign = std::make_shared<XmlDoc>(xmlToSign);
+
+    ASSERT_NO_THROW(
+        signature = std::make_shared<XmlSignature>();
+        signature->sign(*docToSign, *rsaKey);
+    );
+
+    XmlElementPtr root{ docToSign->root() };
+
+    XmlElementPtr signatureNode{ root->find(XmlNode("Signature")) };
+    ASSERT_NE(nullptr, signatureNode);
+
+    const std::string digestValue{ "pzg30SuDz5s45pYl3AR7cAjq23k=" };
+    XmlElementPtr digestValueNode{ root->find(XmlNode("DigestValue")) };
+    ASSERT_NE(nullptr, digestValueNode);
+    EXPECT_EQ(digestValue, digestValueNode->text());
+
+    const std::string signatureValue{ "QBQo9HcWJLJDZz/Jcer7NoGX97IlrNbc/95TXdOSvznN8/c4WXF26gD8QVo1UGfZ\nVicjATMx7puEgoTGi+XhoLSxU3rUbse0jiBMK3LKKyxvw7JAQLij750bfUeyPKXp\nO8ZgdKvBJEufS5N7wlQEcgt8cJJp5xhMHAKENQozPRM=" };
+    XmlElementPtr signatureValueNode{ root->find(XmlNode("SignatureValue")) };
+    ASSERT_NE(nullptr, signatureValueNode);
+    EXPECT_EQ(signatureValue, signatureValueNode->text());
 }
