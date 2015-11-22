@@ -6,6 +6,7 @@
 #include <xsec/framework/XSECException.hpp>
 #include <xsec/dsig/DSIGSignature.hpp>
 #include <xsec/dsig/DSIGReference.hpp>
+#include <xsec/dsig/DSIGKeyInfoX509.hpp>
 #include <xsec/enc/OpenSSL/OpenSSLCryptoKeyRSA.hpp>
 #include <xsec/enc/XSECCryptoException.hpp>
 
@@ -16,6 +17,7 @@ XmlSignature::XmlSignature()
     : XmlSecPlatform    {}
     , _signature        { createSignature(provider()) }
     , _error            {}
+    , _signed           (false)
 {
 }
 
@@ -23,6 +25,7 @@ XmlSignature::XmlSignature(const XmlDoc & xml)
     : XmlSecPlatform    {}
     , _signature        { createSignatureFromDoc(provider(), xml) }
     , _error            {}
+    , _signed           (false)
 {
 }
 
@@ -66,6 +69,36 @@ bool XmlSignature::validate(const Key &key)
     return validate;
 }
 
+bool XmlSignature::addCertificateInfo(const X509Cert &cert)
+{
+    try
+    {
+        if (_signed)
+        {
+            DSIGKeyInfoX509 * keyInfoX509 = _signature->appendX509Data();
+
+            XercesString base64Certificate{ cert.base64Encoded() };
+            XercesString issuer{ cert.issuer() };
+            XercesString serial{ cert.serial() };
+
+            keyInfoX509->appendX509Certificate(base64Certificate);
+            keyInfoX509->setX509IssuerSerial(issuer, serial);
+        }
+        else
+        {
+            _error = "addCertificateInfo() called prior to sign() method";
+
+            return false;
+        }
+    }
+    catch (XSECException &ex)
+    {
+        rethrowWithMessage(ex, "Failed to append certificate info");
+    }
+
+    return true;
+}
+
 void XmlSignature::sign(XmlDoc &xml, const Sec::Key &key)
 {
     try
@@ -82,6 +115,8 @@ void XmlSignature::sign(XmlDoc &xml, const Sec::Key &key)
 
         _signature->setSigningKey(key);
         _signature->sign();
+
+        _signed = true;
     }
     catch (XSECException &ex)
     {

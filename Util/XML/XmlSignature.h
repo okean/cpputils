@@ -23,6 +23,7 @@ public: // interface
     const std::string & error() const;
 
     bool validate(const Sec::Key &key);
+    bool addCertificateInfo(const Sec::X509Cert &cert);
     void sign(XmlDoc &xml, const Sec::Key &key);
 
 private: // internal typedef 
@@ -38,6 +39,7 @@ private: // internal class helpers
 private: // member variables
     SignaturePtr _signature;
     std::string  _error;
+    bool         _signed;
 };
 
 typedef std::shared_ptr<XmlSignature>   XmlSignaturePtr;

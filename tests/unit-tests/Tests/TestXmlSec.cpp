@@ -140,11 +140,15 @@ TEST(XmlSec, ValidateSignature)
     EXPECT_EQ("", signature->error());
 }
 
-namespace { XmlDocPtr docToSign; }
+namespace
+{ 
+    XmlDocPtr docToSign; 
+    XmlSignaturePtr signature;
+}
 
 TEST(XmlSec, SignXmlDoc)
 {
-    XmlSignaturePtr signature{};
+    ASSERT_NE(nullptr, rsaKey);
 
     docToSign = std::make_shared<XmlDoc>(xmlToSign);
 
@@ -167,4 +171,28 @@ TEST(XmlSec, SignXmlDoc)
     XmlElementPtr signatureValueNode{ root->find(XmlNode("SignatureValue")) };
     ASSERT_NE(nullptr, signatureValueNode);
     EXPECT_EQ(signatureValue, signatureValueNode->text());
+}
+
+TEST(XmlSec, AddCertificateInfo)
+{
+    ASSERT_NE(nullptr, docToSign);
+    ASSERT_NE(nullptr, x509Cert);
+    
+    ASSERT_NO_THROW(
+        signature->addCertificateInfo(*x509Cert);
+        );
+
+    XmlElementPtr root{ docToSign->root() };
+
+    XmlElementPtr x509CertificateNode{ root->find(XmlNode("X509Certificate")) };
+    ASSERT_NE(nullptr, x509CertificateNode);
+    ASSERT_EQ(x509Cert->base64Encoded(), x509CertificateNode->text());
+
+    XmlElementPtr x509IssuerNameNode{ root->find(XmlNode("X509IssuerName")) };
+    ASSERT_NE(nullptr, x509IssuerNameNode);
+    ASSERT_EQ(x509Cert->issuer(), x509IssuerNameNode->text());
+
+    XmlElementPtr x509SerialNumberNode{ root->find(XmlNode("X509SerialNumber")) };
+    ASSERT_NE(nullptr, x509SerialNumberNode);
+    ASSERT_EQ(x509Cert->serial(), x509SerialNumberNode->text());
 }
