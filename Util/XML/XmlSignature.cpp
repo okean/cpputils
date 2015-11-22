@@ -55,13 +55,12 @@ bool XmlSignature::validate(const Key &key)
     }
     catch (XSECException &ex)
     {
-        _error = "An error occured during signature validation: "
-            + XercesString::convert(ex.getMsg());
+        rethrowWithMessage(ex, "An error occured during signature validation");
     }
     catch (XSECCryptoException &ex)
     {
-        _error = "An error occured in the XML-Security-C Crypto routines: "
-            + std::string(ex.getMsg());
+        throw std::exception(("An error occured in the XML-Security-C Crypto routines: "
+            + std::string(ex.getMsg())).c_str());
     }
 
     return validate;
