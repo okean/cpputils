@@ -12,3 +12,12 @@ TEST(Text, ReplaceAll)
 
     EXPECT_EQ(expected, actual);
 }
+
+TEST(Text, TrimInPlace)
+{
+    std::string str{ "    \f\n\r\t\vstring to trim    \f\n\r\t\v" };
+
+    Text::trimInPlace(str);
+
+    EXPECT_EQ("string to trim", str);
+}

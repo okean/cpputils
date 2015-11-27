@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Text.h"
+#include <cctype>
 
 using namespace Util;
 
@@ -39,4 +40,28 @@ void Text::replaceAll(
     str += source.substr(lastPos);
 
     source.swap(str);
+}
+
+void Text::trimInPlace(std::string &text)
+{
+    const std::string whitespace{ "\f\n\r\t\v " };
+
+    if (!text.empty() && std::isspace(text.front()))
+    {
+        auto skip = text.find_first_not_of(whitespace);
+
+        if (skip == std::string::npos)
+        {
+            text.clear();
+        }
+
+        text.erase(text.begin(), text.begin() + skip);
+    }
+
+    if (!text.empty() && std::isspace(text.back()))
+    {
+        auto skip = text.find_last_not_of(whitespace) + 1;
+
+        text.erase(text.begin() + skip, text.end());
+    }
 }
