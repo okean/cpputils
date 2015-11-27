@@ -104,6 +104,7 @@
     </ClCompile>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Tests\TestText.cpp" />
+    <ClCompile Include="Tests\TestUrl.cpp" />
     <ClCompile Include="Tests\TestXml.cpp" />
     <ClCompile Include="Tests\TestXmlSec.cpp" />
   </ItemGroup>
