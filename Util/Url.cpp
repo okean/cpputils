@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Url.h"
+#include <Util/Text.h>
 
 using namespace Util;
 
@@ -17,4 +18,52 @@ Url::~Url()
 Url::operator const std::string() const
 {
     return _url;
+}
+
+const Url Url::append(const std::string &path)
+{
+    std::string localPath = path;
+
+    Text::trimInPlace(localPath);
+
+    if (!_url.empty())
+    {
+        bwginWithForwardSlash(path) ?
+        removeForwardSlashFromUrl() :
+        appendForwardSlashToUrl();
+    }
+  
+    _url.append(localPath);
+
+    return *this;
+}
+
+// internal class helpers
+
+bool Url::bwginWithForwardSlash(const std::string &path)
+{
+    if (!path.empty())
+    {
+        return path.front() == '/';
+    }
+
+    return false;
+}
+
+// internal helpers
+
+void Url::removeForwardSlashFromUrl()
+{
+    if (_url.back() == '/')
+    {
+        _url.pop_back();
+    }
+}
+
+void Url::appendForwardSlashToUrl()
+{
+    if (_url.back() != '/')
+    {
+        _url.push_back('/');
+    }
 }
