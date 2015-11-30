@@ -20,7 +20,7 @@ Url::operator const std::string() const
     return _url;
 }
 
-const Url Url::append(const std::string &path)
+Url & Url::append(const std::string &path)
 {
     std::string localPath = path;
 
@@ -28,7 +28,7 @@ const Url Url::append(const std::string &path)
 
     if (!_url.empty())
     {
-        bwginWithForwardSlash(path) ?
+        beginWithForwardSlash(path) ?
         removeForwardSlashFromUrl() :
         appendForwardSlashToUrl();
     }
@@ -40,7 +40,7 @@ const Url Url::append(const std::string &path)
 
 // internal class helpers
 
-bool Url::bwginWithForwardSlash(const std::string &path)
+bool Url::beginWithForwardSlash(const std::string &path)
 {
     if (!path.empty())
     {

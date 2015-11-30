@@ -13,10 +13,10 @@ public:
 public: // interface
     operator const std::string () const;
 
-    const Url append(const std::string &path);
+    Url & append(const std::string &path);
 
 private: // internal class helpers
-    static bool bwginWithForwardSlash(const std::string &path);
+    static bool beginWithForwardSlash(const std::string &path);
 
 private: // internal helpers
     void removeForwardSlashFromUrl();

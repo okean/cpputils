@@ -39,3 +39,11 @@ TEST(Url, Append)
     url6.append("test");
     EXPECT_EQ("test", static_cast<std::string>(url6));
 }
+
+TEST(Url, AppendChain)
+{
+    const std::string example(
+        Url("http://example.com/").append("/test1").append("test2"));
+
+    EXPECT_EQ("http://example.com/test1/test2", example);
+}
