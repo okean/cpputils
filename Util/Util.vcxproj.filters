@@ -57,6 +57,7 @@
       <Filter>XML\Sec</Filter>
     </ClInclude>
     <ClInclude Include="Url.h" />
+    <ClInclude Include="NameValuePair.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="XML\XmlPlatform.cpp">
@@ -97,5 +98,6 @@
       <Filter>XML\Sec</Filter>
     </ClCompile>
     <ClCompile Include="Url.cpp" />
+    <ClCompile Include="NameValuePair.cpp" />
   </ItemGroup>
 </Project>
