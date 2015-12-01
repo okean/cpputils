@@ -17,7 +17,13 @@ NameValuePair::NameValuePair(
     const char & separator,
     bool trim)
 {
-    split(_name, _value, str, separator, trim);
+    split(_name, _value, str, separator);
+
+    if (trim)
+    {
+        Text::trimInPlace(_name);
+        Text::trimInPlace(_value);
+    }
 }
 
 NameValuePair::~NameValuePair()
@@ -46,15 +52,9 @@ void NameValuePair::split(
     std::string &name,
     std::string &value,
     const std::string &str,
-    const char & separator,
-    bool trim)
+    const char & separator)
 {
     std::string namevalue{ str };
-
-    if (trim)
-    {
-        Text::trimInPlace(namevalue);
-    }
 
     auto pos = namevalue.find(separator);
 

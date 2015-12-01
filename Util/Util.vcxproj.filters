@@ -58,6 +58,7 @@
     </ClInclude>
     <ClInclude Include="Url.h" />
     <ClInclude Include="NameValuePair.h" />
+    <ClInclude Include="SplitedString.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="XML\XmlPlatform.cpp">
@@ -99,5 +100,6 @@
     </ClCompile>
     <ClCompile Include="Url.cpp" />
     <ClCompile Include="NameValuePair.cpp" />
+    <ClCompile Include="SplitedString.cpp" />
   </ItemGroup>
 </Project>

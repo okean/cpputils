@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClInclude Include="NameValuePair.h" />
     <ClInclude Include="NonCopyable.hpp" />
+    <ClInclude Include="SplitedString.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Url.h" />
@@ -32,6 +33,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NameValuePair.cpp" />
+    <ClCompile Include="SplitedString.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

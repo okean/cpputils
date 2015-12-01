@@ -22,7 +22,6 @@ TEST(NameValuePair, Separator)
 
     EXPECT_EQ("name2", pair2.name());
     EXPECT_EQ("value2", pair2.value());
-
 }
 
 TEST(NameValuePair, ToString)

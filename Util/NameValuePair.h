@@ -27,8 +27,7 @@ private: // internal static helpers
         std::string &name,
         std::string &value,
         const std::string &str,
-        const char & separator,
-        bool trim);
+        const char & separator);
 
 private: //member variables
     std::string _name;

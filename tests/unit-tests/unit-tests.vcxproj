@@ -103,6 +103,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Tests\TestSplitedString.cpp" />
     <ClCompile Include="Tests\TestNameValuePair.cpp" />
     <ClCompile Include="Tests\TestText.cpp" />
     <ClCompile Include="Tests\TestUrl.cpp" />
