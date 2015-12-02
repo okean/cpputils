@@ -1,14 +1,25 @@
 #include "stdafx.h"
 #include "SplitedString.h"
+#include <Util/Text.h>
+#include <cassert>
 
 using namespace Util;
 
 SplitedString::SplitedString(
     const std::string &str,
-    const char * separator,
+    char sep,
     bool trim,
     bool skipEmpty)
-    : _tokens{ split(str, separator, trim, skipEmpty) }
+    : _tokens{ split(str, sep, 1, trim, skipEmpty) }
+{
+}
+
+SplitedString::SplitedString(
+    const std::string &str,
+    const char * sep,
+    bool trim,
+    bool skipEmpty)
+    : _tokens{ split(str, sep, strlen(sep), trim, skipEmpty) }
 {
 }
 
@@ -33,21 +44,35 @@ size_t SplitedString::count() const
     return _tokens->size();
 }
 
+std::string & SplitedString::at(size_t pos) const
+{
+    assert(pos < count());
+
+    return _tokens->at(pos);
+}
+
+std::string & SplitedString::operator[](size_t pos) const
+{
+    return at(pos);
+}
+
 // internal static helpers
 
+template <typename Separator>
 SplitedString::TokensPtr SplitedString::split(
     const std::string &str,
-    const char * separator,
+    Separator s,
+    size_t len,
     bool trim,
     bool skipEmpty)
 {
     TokensPtr tokens{ std::make_shared<Tokens>() };
 
     for (size_t start = 0, end = 0; 
-         end < str.size(); 
-         start = end + strlen(separator))
+         start < str.size(); 
+         start = end + len)
     {
-        end = str.find(separator, start);
+        end = str.find(s, start);
 
         if (end == std::string::npos)
         {
@@ -56,7 +81,15 @@ SplitedString::TokensPtr SplitedString::split(
 
         Token token = str.substr(start, end - start);
 
-        tokens->push_back(token);
+        if (trim)
+        {
+            Text::trimInPlace(token);
+        }
+
+        if (!token.empty() || !skipEmpty)
+        {
+            tokens->push_back(token);
+        }
     }
 
     return tokens;

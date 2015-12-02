@@ -21,3 +21,12 @@ TEST(Text, TrimInPlace)
 
     EXPECT_EQ("string to trim", str);
 }
+
+TEST(Text, WhiteSpaceText)
+{
+    std::string str{ "    \f\n\r\t\v" };
+
+    Text::trimInPlace(str);
+
+    EXPECT_EQ("", str);
+}

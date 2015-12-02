@@ -53,6 +53,7 @@ void Text::trimInPlace(std::string &text)
         if (skip == std::string::npos)
         {
             text.clear();
+            return;
         }
 
         text.erase(text.begin(), text.begin() + skip);
