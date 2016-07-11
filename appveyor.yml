@@ -5,3 +5,13 @@ configuration: Release
 build:
   project: Util.sln
   verbosity: minimal
+
+before_build:
+ - ps: |
+     if (!(Test-Path C:\Projects\Util\3rd-party\lib)) 
+     { 
+       msbuild 3rd-party\3rd-party.sln /t:Build /p:Configuration=Release /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" 
+     }
+
+cache:
+ - C:\Projects\Util\3rd-party\lib
