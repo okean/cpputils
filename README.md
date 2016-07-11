@@ -1,4 +1,6 @@
 ##cpputils
+[![Build status](https://ci.appveyor.com/api/projects/status/o88f789xd5jixii7/branch/master?svg=true)](https://ci.appveyor.com/project/okean/cpputils/branch/master)
+
 Miscellaneous c++ utilities which comes in handy
 
 ###Description
