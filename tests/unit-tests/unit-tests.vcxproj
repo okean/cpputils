@@ -69,6 +69,12 @@
       <AdditionalLibraryDirectories>$(SolutionDir)3rd-party\lib\$(PlatformToolset)\$(Platform)\$(Configuration);$(SolutionDir)3rd-party\ssl\OpenSSL\lib\$(Platform)\$(Configuration)\;$(SolutionDir)3rd-party\ssl\OpenSSL\lib\$(Platform)\$(Configuration)\;$(SolutionDir)lib\$(PlatformToolset)\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>gtest.lib;xerces.lib;xsec.lib;libeay.lib;ssleay.lib;Util.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>"$(OutDir)unit-tests.exe"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Start unit tests</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -94,6 +100,12 @@
       <AdditionalLibraryDirectories>$(SolutionDir)3rd-party\lib\$(PlatformToolset)\$(Platform)\$(Configuration);$(SolutionDir)3rd-party\ssl\OpenSSL\lib\$(Platform)\$(Configuration)\;$(SolutionDir)lib\$(PlatformToolset)\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>gtest.lib;xerces.lib;xsec.lib;libeay.lib;ssleay.lib;Util.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>"$(OutDir)unit-tests.exe"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Start unit tests</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />

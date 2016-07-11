@@ -14,4 +14,4 @@ before_build:
      }
 
 cache:
- - C:\projects\cpputils\Util\3rd-party\lib\
+ - 3rd-party\lib

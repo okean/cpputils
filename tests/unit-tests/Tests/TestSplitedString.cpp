@@ -78,7 +78,4 @@ TEST(SplitedString, ElementSelectionOperator)
 
     EXPECT_EQ("str0", line[0]);
     EXPECT_EQ("str2", line[2]);
-
-    EXPECT_DEATH(line[-1], "Assertion failed: pos < count");
-    EXPECT_DEATH(line[3] , "Assertion failed: pos < count");
 }
