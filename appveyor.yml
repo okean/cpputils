@@ -14,4 +14,4 @@ before_build:
      }
 
 cache:
- - C:\Projects\Util\3rd-party\lib
+ - C:\Projects\Util\3rd-party\lib\
