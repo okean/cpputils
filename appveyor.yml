@@ -11,8 +11,7 @@ before_build:
  - ps: |
      if ($BUILD_3RD_PARTY) 
      { 
-       msbuild 3rd-party\3rd-party.sln /t:Build /p:Configuration=Release /m 
-       /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" 
+       msbuild 3rd-party\3rd-party.sln /t:Build /p:Configuration=Release /m /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" 
      }
 
 cache:
