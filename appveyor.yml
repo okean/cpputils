@@ -7,7 +7,7 @@ build:
   verbosity: minimal
 
 before_build:
- - ps: $BUILD_3RD_PARTY=$false
+ - ps: $BUILD_3RD_PARTY=$true
  - ps: |
      if ($BUILD_3RD_PARTY) 
      { 
