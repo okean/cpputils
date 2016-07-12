@@ -8,7 +8,7 @@ build:
 
 before_build:
  - ps: |
-     if (!(Test-Path C:\Projects\Util\3rd-party\lib)) 
+     if (!(Test-Path $(APPVEYOR_BUILD_FOLDER)\3rd-party\lib)) 
      { 
        msbuild 3rd-party\3rd-party.sln /t:Build /p:Configuration=Release /m /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" 
      }
