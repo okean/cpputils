@@ -7,9 +7,9 @@ build:
   verbosity: minimal
 
 before_build:
- - ps: $env:BUILD_3RD_PARTY=$false
+ - ps: $BUILD_3RD_PARTY=$false
  - ps: |
-     if (BUILD_3RD_PARTY) 
+     if ($BUILD_3RD_PARTY) 
      { 
        msbuild 3rd-party\3rd-party.sln /t:Build /p:Configuration=Release /m 
        /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" 
