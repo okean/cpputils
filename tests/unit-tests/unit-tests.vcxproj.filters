@@ -36,5 +36,8 @@
     <ClCompile Include="Tests\TestSplitedString.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="Tests\TestWinUtils.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

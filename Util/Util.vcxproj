@@ -17,6 +17,8 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Url.h" />
+    <ClInclude Include="Win\Dll.h" />
+    <ClInclude Include="Win\Function.hpp" />
     <ClInclude Include="XML\Sec\Key.h" />
     <ClInclude Include="XML\Sec\RsaKey.h" />
     <ClInclude Include="XML\Sec\X509Cert.h" />
@@ -40,6 +42,7 @@
     </ClCompile>
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Url.cpp" />
+    <ClCompile Include="Win\Dll.cpp" />
     <ClCompile Include="XML\Sec\Key.cpp" />
     <ClCompile Include="XML\Sec\RsaKey.cpp" />
     <ClCompile Include="XML\Sec\X509Cert.cpp" />

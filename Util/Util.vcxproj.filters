@@ -10,6 +10,9 @@
     <Filter Include="XML\Sec">
       <UniqueIdentifier>{127fded5-38ba-41d7-8402-cf07e89c3167}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Win">
+      <UniqueIdentifier>{b586a9ec-908a-422f-b81d-47d36bc8613a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="XML\XmlDoc.h">
@@ -59,6 +62,12 @@
     <ClInclude Include="Url.h" />
     <ClInclude Include="NameValuePair.h" />
     <ClInclude Include="SplitedString.h" />
+    <ClInclude Include="Win\Dll.h">
+      <Filter>Win</Filter>
+    </ClInclude>
+    <ClInclude Include="Win\Function.hpp">
+      <Filter>Win</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="XML\XmlPlatform.cpp">
@@ -101,5 +110,8 @@
     <ClCompile Include="Url.cpp" />
     <ClCompile Include="NameValuePair.cpp" />
     <ClCompile Include="SplitedString.cpp" />
+    <ClCompile Include="Win\Dll.cpp">
+      <Filter>Win</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

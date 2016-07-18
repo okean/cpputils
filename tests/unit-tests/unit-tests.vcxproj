@@ -120,6 +120,7 @@
     <ClCompile Include="Tests\TestNameValuePair.cpp" />
     <ClCompile Include="Tests\TestText.cpp" />
     <ClCompile Include="Tests\TestUrl.cpp" />
+    <ClCompile Include="Tests\TestWinUtils.cpp" />
     <ClCompile Include="Tests\TestXml.cpp" />
     <ClCompile Include="Tests\TestXmlSec.cpp" />
   </ItemGroup>

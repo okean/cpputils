@@ -2,14 +2,21 @@
 
 #include <string>
 
-namespace Util
-{
+namespace Util {
 
 class Text
 {
 public:
     Text();
     ~Text();
+
+public: // public classes
+
+    struct Convert
+    {
+        static std::wstring     wcsFromUtf(const std::string &str);
+        static std::string      utfFromWcs(const std::wstring &str);
+    };
 
 public: // class interface
     static void replaceAll(
